@@ -1,0 +1,103 @@
+/* styles.css */
+.hero {
+    color: white;
+    text-shadow: 1px 1px 3px black;
+}
+
+.stat {
+    font-size: 1.2rem;
+    font-family: "Roboto Condensed", sans-serif;
+}
+
+.custom-topbar {
+    background-color: #203074;
+}
+
+.custom-login-btn {
+    background-color: #203074;
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    padding: 6px 20px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.custom-login-btn:hover {
+    background-color: #162450; /* hover үед арай бараан өнгө */
+    color: #fff;
+}
+
+/* Roboto Condensed font import from Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap");
+
+.custom-navbar {
+    font-family: "Roboto Condensed", sans-serif;
+}
+
+.custom-nav-links .nav-link {
+    letter-spacing: 0.08em; /* үсгийн хооронд зай */
+    font-weight: 600;
+    text-transform: uppercase;
+    padding-left: 2.5rem; /* зүүнээс илүү зай */
+    padding-right: 2.5rem; /* баруунаас илүү зай */
+    color: #162450; /* арай тод хар өнгө */
+    transition: color 0.3s ease;
+}
+
+/* Hover үед өнгө өөрчлөгдөнө */
+.custom-nav-links .nav-link:hover {
+    color: #162450; /* жишээ нь тод цэнхэр өнгө */
+    text-decoration: underline; /* хүсвэл доор нь зураас нэмэх боломжтой */
+}
+
+.stat-title {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.stat-value {
+    font-size: 1rem;
+    line-height: 1.1;
+}
+
+.stat-percent {
+    color: #666;
+    font-size: 0.7rem;
+}
+
+.member-swiper .swiper-slide img {
+    opacity: 0.8;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.member-swiper .swiper-slide img:hover {
+    transform: scale(1.05);
+    opacity: 1;
+}
+
+.footer-with-bg {
+    position: relative;
+    background-color: #222; /* Хар өнгөний суурь */
+    background-image: url("../images/footer-back.svg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    color: white;
+    overflow: hidden;
+}
+
+/* Хэрвээ зураг бараан биш, текст уншигдахгүй бол доорх overlay нэмж болно */
+.footer-with-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5); /* Хар тунгалаг давхарга */
+    z-index: 0;
+}
+
+.footer-with-bg > .container {
+    position: relative;
+    z-index: 1;
+}

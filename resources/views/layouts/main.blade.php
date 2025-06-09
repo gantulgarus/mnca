@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet" />
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
-    {{-- <link rel="stylesheet" href="{{ asset('css/styles.css') }}" /> --}}
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
@@ -56,7 +56,7 @@
     <nav class="navbar navbar-expand-lg bg-white shadow-sm py-3 custom-navbar">
         <div class="container">
             <!-- Logo -->
-            <a class="navbar-brand d-flex align-items-center" href="#">
+            <a class="navbar-brand d-flex align-items-center" href="/">
                 <img src="images/logo-filled.png" alt="Logo" height="40" />
             </a>
 
@@ -69,7 +69,7 @@
             <!-- Menu & Login -->
             <div class="collapse navbar-collapse" id="mainNav">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 custom-nav-links">
-                    <li class="nav-item"><a class="nav-link nav-hover" href="#">ТАНИЛЦУУЛГА</a></li>
+                    <li class="nav-item"><a class="nav-link nav-hover" href="{{ route('about') }}">ТАНИЛЦУУЛГА</a></li>
                     <li class="nav-item"><a class="nav-link nav-hover" href="#">ГИШҮҮНЧЛЭЛ</a></li>
                     <li class="nav-item"><a class="nav-link nav-hover" href="#">МЭДЭЭ</a></li>
                     <li class="nav-item"><a class="nav-link nav-hover" href="#">ТОВХИМОЛ</a></li>
