@@ -6,14 +6,24 @@
             <!-- Зүүн тал: Мэдээнүүд -->
             <div class="col-md-8">
                 <!-- Том мэдээ -->
-                <div class="card mb-3" style="height: 400px">
-                    <img src="images/post1.jpg" class="card-img-top" style="height: 250px; object-fit: cover" alt="Том мэдээ" />
-                    <div class="card-body">
-                        <small class="text-muted">2025-06-03</small>
+                <div class="card mb-3" style="height: 400px; position: relative; overflow: hidden;">
+                    <img src="images/post1.jpg" class="card-img-top" style="height: 100%; width: 100%; object-fit: cover;"
+                        alt="Том мэдээ" />
+
+                    <!-- Overlay хэсэг -->
+                    <div
+                        style="
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        color: #fff;
+        padding: 20px;
+        ">
+                        <small class="text-white">2025-06-03</small>
                         <h5 class="card-title">ҮНДСЭН ХУУЛИЙН ЦЭЦ МАРГААН ХЯНАН...</h5>
-                        <p class="card-text">
-                            Том мэдээний товч агуулга эсвэл танилцуулга энд орно.
-                        </p>
+                        <p class="card-text">Том мэдээний товч агуулга эсвэл танилцуулга энд орно.</p>
                     </div>
                 </div>
 

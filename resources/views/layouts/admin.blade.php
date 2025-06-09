@@ -52,9 +52,24 @@
             <div class="col-md-10 content">
                 <nav class="navbar navbar-expand navbar-light bg-white shadow-sm mb-4">
                     <div class="container-fluid">
-                        <span class="navbar-brand mb-0 h5">Хяналтын Самбар</span>
+                        <span class="navbar-brand mb-0 h5">Хянах Самбар</span>
+
+                        <div class="d-flex align-items-center ms-auto gap-3">
+                            <!-- Хэрэглэгчийн нэрийг харуулах -->
+                            @auth
+                                <span>Сайн байна уу, <strong>{{ Auth::user()->name }}</strong></span>
+                            @endauth
+
+                            <form method="POST" action="{{ route('logout') }}">
+                                @csrf
+                                <button type="submit" class="btn btn-outline-danger btn-sm">
+                                    Гарах
+                                </button>
+                            </form>
+                        </div>
                     </div>
                 </nav>
+
 
                 @yield('content')
             </div>

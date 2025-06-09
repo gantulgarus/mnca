@@ -78,7 +78,7 @@
                     <li class="nav-item"><a class="nav-link nav-hover" href="#">ДУЛААН ШИЙДЭЛ</a></li>
                     <li class="nav-item"><a class="nav-link nav-hover" href="https://job-mnca.mn/">JOB</a></li>
                 </ul>
-                <button class="btn custom-login-btn">НЭВТРЭХ</button>
+                <a class="btn custom-login-btn" href="{{ route('login') }}">НЭВТРЭХ</a>
             </div>
         </div>
     </nav>
@@ -87,7 +87,7 @@
     @yield('content')
 
     <!-- Footer хэсэг -->
-    <footer class="footer-with-bg text-white pt-5 pb-4">
+    <footer class="footer-with-bg text-white pt-5 pb-4" style="background-color: #343a40;">
         <div class="container">
             <div class="row">
                 <!-- Байршлын газрын зураг -->
@@ -95,22 +95,24 @@
                     <h5 class="mb-3">Байршил</h5>
                     <div class="ratio ratio-16x9">
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2737.253256162402!2d106.91905861561638!3d47.91830637921154!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5d9697b8f1234567%3A0x123456789abcdef0!2z0KHQtdC80L7QvdCwINCQ0YDQsNCy0LjQutC-0LPQvtCy0LDRgtCw0YLQvtCy0LAsIDgxMDA!5e0!3m2!1smn!2smn!4v1684500000000!5m2!1smn!2smn"
-                            style="border: 0" allowfullscreen="" loading="lazy"
-                            referrerpolicy="no-referrer-when-downgrade" title="Манай байршлын газрын зураг"></iframe>
+                            src="https://www.google.com/maps?q=47.92128097896847,106.90844186006527&hl=mn&z=15&output=embed"
+                            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+                            title="Манай байршлын газрын зураг"></iframe>
                     </div>
                 </div>
 
                 <!-- Холбоо барих -->
                 <div class="col-md-4 mb-4">
                     <h5 class="mb-3">Холбоо барих</h5>
-                    <p>
-                        <i class="fa fa-map-marker-alt me-2"></i> Улаанбаатар, Сүхбаатар
-                        дүүрэг, 1-р хороо
-                    </p>
-                    <p><i class="fa fa-phone me-2"></i> (+976) 7011 1515</p>
-                    <p><i class="fa fa-envelope me-2"></i> info@mca.mn</p>
-                    <p><i class="fa fa-globe me-2"></i> www.mca.mn</p>
+                    <p><i class="fa fa-map-marker-alt me-2"></i> Монгол улс, Улаанбаатар хот-15141<br>
+                        Чингэлтэй дүүрэг, 5-р хороо, Самбуугийн гудамж-24 МН Тауэр, 8-р давхар</p>
+
+                    <p><strong>МБҮА ТББ-ын Ажлын алба</strong> 805, 806 тоот</p>
+                    <p><i class="fa fa-phone me-2"></i> 7011151594444173</p>
+                    <p><i class="fa fa-envelope me-2"></i> info@mnca.mn</p>
+
+                    <p><strong>Барилгын үйл ажиллагаа тусгай зөвшөөрлийн хэлтэс</strong> 811 тоот</p>
+                    <p><i class="fa fa-envelope me-2"></i> tz70165055@gmail.com</p>
                 </div>
 
                 <!-- Санал хүсэлт -->
@@ -138,8 +140,7 @@
 
             <hr class="bg-light" />
             <div class="text-center">
-                &copy; 2025 Монголын Барилгын Үндэсний Ассоциаци. Бүх эрх хуулиар
-                хамгаалагдсан.
+                &copy; 2025 Монголын Барилгын Үндэсний Ассоциаци. Бүх эрх хуулиар хамгаалагдсан.
             </div>
         </div>
     </footer>
