@@ -57,7 +57,7 @@
         <div class="container">
             <!-- Logo -->
             <a class="navbar-brand d-flex align-items-center" href="/">
-                <img src="images/logo-filled.png" alt="Logo" height="40" />
+                <img src="{{ asset('images/logo-filled.png') }}" alt="Logo" height="40" />
             </a>
 
             <!-- Toggle for mobile -->
@@ -71,7 +71,7 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0 custom-nav-links">
                     <li class="nav-item"><a class="nav-link nav-hover" href="{{ route('about') }}">ТАНИЛЦУУЛГА</a></li>
                     <li class="nav-item"><a class="nav-link nav-hover" href="#">ГИШҮҮНЧЛЭЛ</a></li>
-                    <li class="nav-item"><a class="nav-link nav-hover" href="#">МЭДЭЭ</a></li>
+                    <li class="nav-item"><a class="nav-link nav-hover" href="{{ route('posts.list') }}">МЭДЭЭ</a></li>
                     <li class="nav-item"><a class="nav-link nav-hover" href="#">ТОВХИМОЛ</a></li>
                     <li class="nav-item"><a class="nav-link nav-hover" href="https://mcis.gov.mn/mn/grants">ТУСГАЙ
                             ЗӨВШӨӨРӨЛ</a></li>
@@ -94,10 +94,12 @@
                 <div class="col-md-4 mb-4">
                     <h5 class="mb-3">Байршил</h5>
                     <div class="ratio ratio-16x9">
-                        <iframe
-                            src="https://www.google.com/maps?q=47.92128097896847,106.90844186006527&hl=mn&z=15&output=embed"
-                            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
-                            title="Манай байршлын газрын зураг"></iframe>
+                        <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0"
+                            marginwidth="0"
+                            src="https://www.openstreetmap.org/export/embed.html?bbox=106.905941%2C47.919780%2C106.910941%2C47.923780&amp;layer=mapnik&amp;marker=47.921780%2C106.908441"
+                            style="border:1px solid #ccc;" allowfullscreen loading="lazy"
+                            title="Манай байршлын газрын зураг">
+                        </iframe>
                     </div>
                 </div>
 
@@ -146,6 +148,7 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/medium-zoom@1.0.6/dist/medium-zoom.min.js"></script>
     @yield('scripts')
 
 </body>

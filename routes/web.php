@@ -1,15 +1,17 @@
 <?php
 
-use App\Http\Controllers\AboutController;
-use App\Http\Controllers\HumanResourceController;
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\AboutController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\HumanResourceController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('about', [AboutController::class, 'about'])->name('about');
+
+Route::get('/posts/list', [PostController::class, 'list'])->name('posts.list');
+Route::get('/posts/detail/{post}', [PostController::class, 'detail'])->name('posts.detail');
 
 
 Route::get('/dashboard', function () {
@@ -22,6 +24,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::resource('human-resources', HumanResourceController::class);
+    Route::resource('posts', PostController::class);
 });
 
 require __DIR__ . '/auth.php';
