@@ -1,10 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\AboutController;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\HumanResourceController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -12,6 +13,7 @@ Route::get('about', [AboutController::class, 'about'])->name('about');
 
 Route::get('/posts/list', [PostController::class, 'list'])->name('posts.list');
 Route::get('/posts/detail/{post}', [PostController::class, 'detail'])->name('posts.detail');
+Route::get('/memberships/list', [MembershipController::class, 'list'])->name('memberships.list');
 
 
 Route::get('/dashboard', function () {
@@ -25,6 +27,7 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('human-resources', HumanResourceController::class);
     Route::resource('posts', PostController::class);
+    Route::resource('memberships', MembershipController::class);
 });
 
 require __DIR__ . '/auth.php';

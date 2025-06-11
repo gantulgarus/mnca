@@ -115,8 +115,6 @@
         </div>
     </section>
 
-
-
     <!-- Видео мэдээ -->
     <div class="container my-5">
         <h5 class="mb-4">Видео мэдээ</h5>
@@ -139,33 +137,32 @@
 
     <!-- Манай гишүүн байгууллагууд -->
     <div class="container my-5">
-        <h5 class="mb-4">Манай гишүүн байгууллагууд</h5>
-        <div class="swiper member-swiper py-2" style="height: 60px;">
-            <div class="swiper-wrapper align-items-center" style="height: 60px;">
-                <!-- Нэг лого -->
-                <div class="swiper-slide text-center">
-                    <img src="images/logo1.jpg" alt="Гишүүн 1" style="height: 60px" />
+        <h5 class="mb-4 text-center text-uppercase fw-bold" style="letter-spacing: 1px;">Манай гишүүн байгууллагууд</h5>
+
+        <div class="position-relative">
+            <div class="swiper member-swiper py-3" style="height: 150px;">
+                <div class="swiper-wrapper align-items-center">
+                    @foreach ($memberships as $member)
+                        <div class="swiper-slide">
+                            <div class="d-flex justify-content-center align-items-center h-100 px-3">
+                                @if ($member->logo)
+                                    <img src="{{ asset('storage/' . $member->logo) }}"
+                                        alt="{{ $member->organization_name }}" class="img-fluid member-logo"
+                                        onerror="this.onerror=null;this.src='{{ asset('images/default-logo.png') }}'" />
+                                @else
+                                    <div class="member-logo-alt d-flex align-items-center justify-content-center">
+                                        {{ strtoupper(substr($member->organization_name, 0, 2)) }}
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                    @endforeach
                 </div>
-                <div class="swiper-slide text-center">
-                    <img src="images/logo2.jpg" alt="Гишүүн 2" style="height: 60px" />
-                </div>
-                <div class="swiper-slide text-center">
-                    <img src="images/logo3.jpg" alt="Гишүүн 3" style="height: 60px" />
-                </div>
-                <div class="swiper-slide text-center">
-                    <img src="images/logo4.jpg" alt="Гишүүн 4" style="height: 60px" />
-                </div>
-                <div class="swiper-slide text-center">
-                    <img src="images/logo5.jpg" alt="Гишүүн 5" style="height: 60px" />
-                </div>
-                <div class="swiper-slide text-center">
-                    <img src="images/logo6.jpg" alt="Гишүүн 6" style="height: 60px" />
-                </div>
-                <div class="swiper-slide text-center">
-                    <img src="images/logo7.png" alt="Гишүүн 7" style="height: 60px" />
-                </div>
-                <!-- шаардлагатай тоогоор үргэлжлүүлж болно -->
             </div>
+
+            <!-- Navigation buttons -->
+            <div class="swiper-button-prev member-swiper-prev"></div>
+            <div class="swiper-button-next member-swiper-next"></div>
         </div>
     </div>
 
@@ -233,7 +230,7 @@
 @endsection
 
 @section('scripts')
-    <!-- Swiper Initialization -->
+    <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -247,14 +244,10 @@
                 pagination: {
                     el: ".swiper-pagination",
                     clickable: true,
-                },
-                navigation: {
-                    nextEl: ".swiper-button-next",
-                    prevEl: ".swiper-button-prev",
-                },
+                }
             });
 
-            // Member Swiper
+            // Member Swiper (Continuous Autoplay)
             const memberSwiper = new Swiper(".member-swiper", {
                 loop: true,
                 slidesPerView: 5,
@@ -266,18 +259,26 @@
                 },
                 freeMode: true,
                 freeModeMomentum: false,
+                navigation: {
+                    nextEl: ".member-swiper-next",
+                    prevEl: ".member-swiper-prev",
+                },
                 breakpoints: {
                     0: {
                         slidesPerView: 2,
+                        spaceBetween: 20
                     },
                     576: {
                         slidesPerView: 3,
+                        spaceBetween: 25
                     },
                     768: {
                         slidesPerView: 4,
+                        spaceBetween: 30
                     },
                     992: {
                         slidesPerView: 5,
+                        spaceBetween: 40
                     }
                 }
             });
@@ -298,74 +299,31 @@
                 breakpoints: {
                     0: {
                         slidesPerView: 1,
+                        spaceBetween: 15
                     },
                     768: {
                         slidesPerView: 2,
+                        spaceBetween: 20
                     },
                     1024: {
                         slidesPerView: 3,
-                    },
-                },
+                        spaceBetween: 30
+                    }
+                }
+            });
+
+            // Hover effect for member logos
+            const memberLogos = document.querySelectorAll('.member-logo');
+            memberLogos.forEach(logo => {
+                logo.addEventListener('mouseenter', () => {
+                    logo.style.filter = 'grayscale(0)';
+                    logo.style.opacity = '1';
+                });
+                logo.addEventListener('mouseleave', () => {
+                    logo.style.filter = 'grayscale(100%)';
+                    logo.style.opacity = '0.7';
+                });
             });
         });
     </script>
 @endsection
-<!-- Swiper Инициализаци -->
-<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-<script>
-    const swiper = new Swiper(".hero-swiper", {
-        loop: true,
-        autoplay: {
-            delay: 4000,
-            disableOnInteraction: false,
-        },
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-        },
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-    });
-
-    // Гишүүн байгууллагуудын Swiper
-    const memberSwiper = new Swiper(".member-swiper", {
-        loop: true,
-        slidesPerView: 5, // 👈 олон лого нэгэн зэрэг харуулах
-        spaceBetween: 40,
-        speed: 6000, // урсах хурд
-        autoplay: {
-            delay: 0,
-            disableOnInteraction: false,
-        },
-        freeMode: true,
-        freeModeMomentum: false,
-        allowTouchMove: false,
-    });
-
-    const benefitSwiper = new Swiper(".benefit-swiper", {
-        loop: true,
-        slidesPerView: 3, // эсвэл 1, 2 гэх мэт
-        spaceBetween: 30,
-        autoplay: {
-            delay: 4000,
-            disableOnInteraction: false,
-        },
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-        },
-        breakpoints: {
-            0: {
-                slidesPerView: 1,
-            },
-            768: {
-                slidesPerView: 2,
-            },
-            1024: {
-                slidesPerView: 3,
-            },
-        },
-    });
-</script>

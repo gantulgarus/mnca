@@ -6,6 +6,131 @@
     font-size: 0.8rem;
 }
 
+.custom-navbar {
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+}
+
+.navbar-nav .nav-link {
+    position: relative;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    color: #333;
+    transition: all 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #162450;
+}
+
+/* Active link styling */
+.navbar-nav .nav-link.active {
+    color: #162450;
+    font-weight: 600;
+}
+
+/* Animated underline effect */
+.navbar-nav .nav-link:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 2px;
+    bottom: 0;
+    left: 50%;
+    background-color: #162450;
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.navbar-nav .nav-link:hover:after,
+.navbar-nav .nav-link.active:after {
+    width: 70%;
+}
+
+/* Login button styling */
+.btn-primary {
+    background-color: #162450;
+    border-color: #162450;
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #162450;
+    border-color: #162450;
+    transform: translateY(-1px);
+}
+
+/* Mobile menu adjustments */
+@media (max-width: 991.98px) {
+    .navbar-nav {
+        padding-top: 1rem;
+    }
+    .navbar-nav .nav-item {
+        margin-bottom: 0.5rem;
+    }
+    .btn-primary {
+        margin-top: 1rem;
+        margin-bottom: 1rem;
+    }
+}
+
+.member-swiper {
+    padding: 0 40px;
+}
+
+.member-logo {
+    max-height: 50px;
+    max-width: 150px;
+    width: auto;
+    object-fit: contain;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transition: all 0.3s ease;
+}
+
+.member-logo:hover {
+    filter: grayscale(0);
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.member-logo-alt {
+    height: 50px;
+    width: 100px;
+    background-color: #f8f9fa;
+    color: #6c757d;
+    font-weight: bold;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.member-swiper-prev,
+.member-swiper-next {
+    color: #333;
+    background: rgba(255, 255, 255, 0.8);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.member-swiper-prev::after,
+.member-swiper-next::after {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.member-swiper-prev {
+    left: 0;
+}
+
+.member-swiper-next {
+    right: 0;
+}
+
 .footer-with-bg {
     background-color: #343a40;
 }

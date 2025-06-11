@@ -9,8 +9,6 @@
     <!-- Summernote CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.20/summernote-lite.min.css" rel="stylesheet">
 
-
-
     <style>
         body {
             background-color: #f8f9fa;
@@ -50,6 +48,7 @@
                 <a href="{{ route('dashboard') }}">Хянах самбар</a>
                 <a href="{{ route('posts.index') }}">Мэдээ</a>
                 <a href="{{ route('human-resources.index') }}">Хүний нөөц</a>
+                <a href="{{ route('memberships.index') }}">Гишүүнчлэл</a>
                 <a href="#">Тохиргоо</a>
             </div>
 

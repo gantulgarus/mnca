@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
+    @yield('styles')
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
@@ -68,17 +69,37 @@
 
             <!-- Menu & Login -->
             <div class="collapse navbar-collapse" id="mainNav">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 custom-nav-links">
-                    <li class="nav-item"><a class="nav-link nav-hover" href="{{ route('about') }}">ТАНИЛЦУУЛГА</a></li>
-                    <li class="nav-item"><a class="nav-link nav-hover" href="#">ГИШҮҮНЧЛЭЛ</a></li>
-                    <li class="nav-item"><a class="nav-link nav-hover" href="{{ route('posts.list') }}">МЭДЭЭ</a></li>
-                    <li class="nav-item"><a class="nav-link nav-hover" href="#">ТОВХИМОЛ</a></li>
-                    <li class="nav-item"><a class="nav-link nav-hover" href="https://mcis.gov.mn/mn/grants">ТУСГАЙ
-                            ЗӨВШӨӨРӨЛ</a></li>
-                    <li class="nav-item"><a class="nav-link nav-hover" href="#">ДУЛААН ШИЙДЭЛ</a></li>
-                    <li class="nav-item"><a class="nav-link nav-hover" href="https://job-mnca.mn/">JOB</a></li>
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('about') ? 'active' : '' }}"
+                            href="{{ route('about') }}">ТАНИЛЦУУЛГА</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('memberships.list') ? 'active' : '' }}"
+                            href="{{ route('memberships.list') }}">ГИШҮҮНЧЛЭЛ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('posts.list') ? 'active' : '' }}"
+                            href="{{ route('posts.list') }}">МЭДЭЭ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->is('publications') ? 'active' : '' }}"
+                            href="#">ТОВХИМОЛ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->is('grants') ? 'active' : '' }}"
+                            href="https://mcis.gov.mn/mn/grants">ТУСГАЙ ЗӨВШӨӨРӨЛ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->is('solutions') ? 'active' : '' }}" href="#">ДУЛААН
+                            ШИЙДЭЛ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->is('jobs') ? 'active' : '' }}"
+                            href="https://job-mnca.mn/">JOB</a>
+                    </li>
                 </ul>
-                <a class="btn custom-login-btn" href="{{ route('login') }}">НЭВТРЭХ</a>
+                <a class="btn btn-primary px-3 py-2 rounded-pill" href="{{ route('login') }}">НЭВТРЭХ</a>
             </div>
         </div>
     </nav>
