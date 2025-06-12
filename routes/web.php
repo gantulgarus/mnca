@@ -7,6 +7,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\HumanResourceController;
+use App\Http\Controllers\BuildingMaterialPriceController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('about', [AboutController::class, 'about'])->name('about');
@@ -28,6 +29,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('human-resources', HumanResourceController::class);
     Route::resource('posts', PostController::class);
     Route::resource('memberships', MembershipController::class);
+    Route::resource('building_material_prices', BuildingMaterialPriceController::class);
 });
 
 require __DIR__ . '/auth.php';

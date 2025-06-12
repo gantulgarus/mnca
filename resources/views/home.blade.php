@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-    <div class="container my-5">
+    <div class="container my-4">
         <div class="row">
             <!-- Зүүн тал: Мэдээнүүд -->
             <div class="col-md-8">
@@ -69,24 +69,20 @@
                 <div class="d-flex flex-column align-items-center">
                     <!-- Нэг мөрөнд байрлах статистик -->
                     <div class="d-flex justify-content-between gap-2 mb-3 w-100">
-                        <!-- ТӨМӨР -->
-                        <div class="flex-fill stat border rounded p-2 bg-light shadow-sm text-center">
-                            <div class="text-danger fw-bold small mb-1">ТӨМӨР</div>
-                            <div class="fs-6 fw-bold">105</div>
-                            <div class="small text-muted">5%</div>
-                        </div>
-                        <!-- БАНЗ -->
-                        <div class="flex-fill stat border rounded p-2 bg-light shadow-sm text-center">
-                            <div class="text-success fw-bold small mb-1">БАНЗ</div>
-                            <div class="fs-6 fw-bold">4900</div>
-                            <div class="small text-muted">2%</div>
-                        </div>
-                        <!-- ЦЕМЕНТ -->
-                        <div class="flex-fill stat border rounded p-2 bg-light shadow-sm text-center">
-                            <div class="text-danger fw-bold small mb-1">ЦЕМЕНТ</div>
-                            <div class="fs-6 fw-bold">950</div>
-                            <div class="small text-muted">5.56%</div>
-                        </div>
+                        @foreach ($building_material_prices as $price)
+                            <div class="flex-fill stat border rounded p-2 bg-light shadow-sm text-center">
+                                <div class="fw-bold small mb-1">{{ $price->material_name }}</div>
+                                <div class="fs-6 fw-bold" style="color: #162450">{{ $price->price }}</div>
+                                <div
+                                    class="small
+            @if ($price->trend == 'up') text-success
+            @elseif ($price->trend == 'down') text-danger
+            @else text-secondary @endif">
+                                    {{ $price->percentage_change }}%
+                                </div>
+
+                            </div>
+                        @endforeach
                     </div>
 
                     <!-- Зураг -->
@@ -105,10 +101,12 @@
                 <div class="swiper-slide" style="height: 250px;">
                     <img src="{{ asset('images/bg-1.jpg') }}" alt="Slide 1" class="w-100"
                         style="height: 250px; object-fit: cover; display: block;">
+                    <div class="overlay"></div>
                 </div>
                 <div class="swiper-slide" style="height: 250px;">
                     <img src="{{ asset('images/bg-2.jpg') }}" alt="Slide 2" class="w-100"
                         style="height: 250px; object-fit: cover; display: block;">
+                    <div class="overlay"></div>
                 </div>
             </div>
             <div class="swiper-pagination"></div>

@@ -53,6 +53,7 @@
     background-color: #162450;
     border-color: #162450;
     transition: all 0.3s ease;
+    font-size: 0.875rem;
 }
 
 .btn-primary:hover {
@@ -167,4 +168,19 @@ footer {
 }
 .hover-zoom:hover {
     transform: scale(1.05);
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4); /* 0.4 нь бараан туяаны гүн */
+    z-index: 1;
+}
+
+.swiper-slide img {
+    position: relative;
+    z-index: 0;
 }

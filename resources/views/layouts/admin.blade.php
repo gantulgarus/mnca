@@ -49,6 +49,7 @@
                 <a href="{{ route('posts.index') }}">Мэдээ</a>
                 <a href="{{ route('human-resources.index') }}">Хүний нөөц</a>
                 <a href="{{ route('memberships.index') }}">Гишүүнчлэл</a>
+                <a href="{{ route('building_material_prices.index') }}">Ханш</a>
                 <a href="#">Тохиргоо</a>
             </div>
 

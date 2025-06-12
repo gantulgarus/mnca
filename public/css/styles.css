@@ -1,3 +1,6 @@
+/* Roboto Condensed font import from Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap");
+
 /* styles.css */
 .hero {
     color: white;
@@ -27,9 +30,6 @@
     background-color: #162450; /* hover үед арай бараан өнгө */
     color: #fff;
 }
-
-/* Roboto Condensed font import from Google Fonts */
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap");
 
 .custom-navbar {
     font-family: "Roboto Condensed", sans-serif;

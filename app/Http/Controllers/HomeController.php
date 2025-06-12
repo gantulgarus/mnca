@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Membership;
 use Illuminate\Http\Request;
+use App\Models\BuildingMaterialPrice;
 
 class HomeController extends Controller
 {
@@ -17,6 +18,8 @@ class HomeController extends Controller
 
         $memberships = Membership::all();
 
-        return view('home', compact('posts', 'video_posts', 'memberships'));
+        $building_material_prices = BuildingMaterialPrice::latest()->get();
+
+        return view('home', compact('posts', 'video_posts', 'memberships', 'building_material_prices'));
     }
 }
