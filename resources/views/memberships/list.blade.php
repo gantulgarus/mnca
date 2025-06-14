@@ -3,7 +3,7 @@
 @section('content')
     <div class="container py-4">
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h3 class="h3 mb-0">МБҮА ТББ-ын Гишүүн байгууллагууд</h3>
+            <h3 class="mb-4 fw-bold">МБҮА ТББ-ын Гишүүн байгууллагууд</h3>
             @if ($memberships->isNotEmpty())
                 <small class="text-muted">Нийт: {{ $memberships->count() }} гишүүн</small>
             @endif
@@ -94,6 +94,9 @@
                         </div>
                     </div>
                 @endforeach
+            </div>
+            <div class="mt-4 d-flex justify-content-center">
+                {{ $memberships->links() }}
             </div>
         @endif
     </div>

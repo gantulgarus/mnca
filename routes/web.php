@@ -1,8 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BookController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MembershipController;
@@ -18,6 +20,7 @@ Route::get('warm-solution', function () {
 Route::get('/posts/list', [PostController::class, 'list'])->name('posts.list');
 Route::get('/posts/detail/{post}', [PostController::class, 'detail'])->name('posts.detail');
 Route::get('/memberships/list', [MembershipController::class, 'list'])->name('memberships.list');
+Route::get('/books/list', [BookController::class, 'list'])->name('books.list');
 
 
 Route::get('/dashboard', function () {
@@ -33,6 +36,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('posts', PostController::class);
     Route::resource('memberships', MembershipController::class);
     Route::resource('building_material_prices', BuildingMaterialPriceController::class);
+    Route::resource('books', BookController::class);
+    Route::resource('users', UserController::class);
 });
 
 require __DIR__ . '/auth.php';

@@ -101,3 +101,15 @@
     position: relative;
     z-index: 1;
 }
+
+.page-link:hover {
+    background-color: #203074;
+    color: #fff;
+    border-color: #203074;
+}
+
+.page-item.active .page-link {
+    background-color: #203074;
+    border-color: #203074;
+    color: #fff;
+}

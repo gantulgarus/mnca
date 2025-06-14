@@ -10,7 +10,7 @@ class MembershipController extends Controller
     // Бүх гишүүдийг харуулах
     public function index()
     {
-        $memberships = Membership::all();
+        $memberships = Membership::latest()->paginate(10); // Сүүлд нэмэгдсэн гишүүдийг 10-аар хуудаслах
         return view('memberships.index', compact('memberships'));
     }
 
@@ -28,10 +28,10 @@ class MembershipController extends Controller
             'address' => 'nullable|string',
             'phone' => 'nullable|string|max:50',
             'email' => 'nullable|email|max:255',
-            'website' => 'nullable|url|max:255',
-            'facebook' => 'nullable|url|max:255',
-            'twitter' => 'nullable|url|max:255',
-            'youtube' => 'nullable|url|max:255',
+            'website' => 'nullable|max:255',
+            'facebook' => 'nullable|max:255',
+            'twitter' => 'nullable|max:255',
+            'youtube' => 'nullable|max:255',
             'logo' => 'nullable|image|max:4096', // 4MB хүртэлх зураг
         ]);
 
@@ -63,10 +63,10 @@ class MembershipController extends Controller
             'address' => 'nullable|string',
             'phone' => 'nullable|string|max:50',
             'email' => 'nullable|email|max:255',
-            'website' => 'nullable|url|max:255',
-            'facebook' => 'nullable|url|max:255',
-            'twitter' => 'nullable|url|max:255',
-            'youtube' => 'nullable|url|max:255',
+            'website' => 'nullable|max:255',
+            'facebook' => 'nullable|max:255',
+            'twitter' => 'nullable|max:255',
+            'youtube' => 'nullable|max:255',
             'logo' => 'nullable|image|max:4096', // 4MB хүртэлх зураг
         ]);
 
@@ -87,7 +87,7 @@ class MembershipController extends Controller
 
     public function list()
     {
-        $memberships = Membership::all();
+        $memberships = Membership::orderBy('created_at', 'desc')->paginate(6);
         return view('memberships.list', compact('memberships'));
     }
 }

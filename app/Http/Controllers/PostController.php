@@ -94,7 +94,7 @@ class PostController extends Controller
 
     public function list()
     {
-        $posts = Post::latest()->paginate(9);
+        $posts = Post::orderBy('published_at', 'desc')->paginate(6);
         return view('posts.list', compact('posts'));
     }
     public function detail(Post $post)

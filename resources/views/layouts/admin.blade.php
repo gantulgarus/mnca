@@ -50,7 +50,8 @@
                 <a href="{{ route('human-resources.index') }}">Хүний нөөц</a>
                 <a href="{{ route('memberships.index') }}">Гишүүнчлэл</a>
                 <a href="{{ route('building_material_prices.index') }}">Ханш</a>
-                <a href="#">Тохиргоо</a>
+                <a href="{{ route('books.index') }}">Ном, сэтгүүл</a>
+                <a href="{{ route('users.index') }}">Хэрэглэгч</a>
             </div>
 
             <!-- Main Content -->

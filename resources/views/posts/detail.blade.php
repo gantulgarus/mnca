@@ -8,9 +8,9 @@
             @endif
 
             <div class="card-body">
-                <h2 class="card-title fw-bold">{{ $post->title }}</h2>
+                <h5 class="card-title fw-bold">{{ $post->title }}</h5>
 
-                <p class="text-muted mb-3">
+                <p class="text-muted mb-3 small">
                     <i class="bi bi-calendar-event"></i> {{ $post->published_at->format('Y/m/d') }}
                     &nbsp; | &nbsp;
                     <i class="bi bi-tag"></i> {{ $post->category->name ?? 'Ангилалгүй' }}
