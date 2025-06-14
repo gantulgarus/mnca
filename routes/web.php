@@ -11,6 +11,9 @@ use App\Http\Controllers\BuildingMaterialPriceController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('about', [AboutController::class, 'about'])->name('about');
+Route::get('warm-solution', function () {
+    return view('warm-solution');
+})->name('warm-solution');
 
 Route::get('/posts/list', [PostController::class, 'list'])->name('posts.list');
 Route::get('/posts/detail/{post}', [PostController::class, 'detail'])->name('posts.detail');
