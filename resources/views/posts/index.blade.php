@@ -22,7 +22,7 @@
             <tbody>
                 @foreach ($posts as $post)
                     <tr>
-                        <td>{{ $post->title }}</td>
+                        <td>{{ $post->translation('mn')?->title }}</td>
                         <td>{{ $post->category->name ?? '-' }}</td>
                         <td>{{ \Carbon\Carbon::parse($post->published_at)->format('Y/m/d') }}</td>
                         <td>

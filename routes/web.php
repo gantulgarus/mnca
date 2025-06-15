@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Cookie;
 use App\Http\Controllers\BookController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
@@ -10,6 +11,25 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\HumanResourceController;
 use App\Http\Controllers\BuildingMaterialPriceController;
+
+
+Route::get('lang/{locale}', function ($locale) {
+    if (!in_array($locale, ['en', 'mn'])) {
+        abort(400, 'Invalid language selection');
+    }
+
+    // Store in session
+    session()->put('locale', $locale);
+
+    // Store in cookie (5 years expiration)
+    Cookie::queue('locale', $locale, 2628000);
+
+    // Set for current request
+    app()->setLocale($locale);
+
+    return back()->with('success', __('Language changed successfully'));
+})->name('lang.switch');
+
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('about', [AboutController::class, 'about'])->name('about');

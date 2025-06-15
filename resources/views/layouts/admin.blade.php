@@ -44,7 +44,10 @@
         <div class="row">
             <!-- Sidebar -->
             <div class="col-md-2 sidebar p-0">
-                <h4 class="text-center py-3 border-bottom border-secondary">Админ</h4>
+                <a href="{{ url('/') }}" class="text-center py-3 border-bottom border-secondary">
+                    <img src="{{ asset('images/mbua.png') }}" alt="Logo" width="130" height="50"
+                        class="d-inline-block align-text-top">
+                </a>
                 <a href="{{ route('dashboard') }}">Хянах самбар</a>
                 <a href="{{ route('posts.index') }}">Мэдээ</a>
                 <a href="{{ route('human-resources.index') }}">Хүний нөөц</a>
@@ -58,7 +61,6 @@
             <div class="col-md-10 content">
                 <nav class="navbar navbar-expand navbar-light bg-white shadow-sm mb-4">
                     <div class="container-fluid">
-                        <span class="navbar-brand mb-0 h5">Хянах Самбар</span>
 
                         <div class="d-flex align-items-center ms-auto gap-3">
                             <!-- Хэрэглэгчийн нэрийг харуулах -->

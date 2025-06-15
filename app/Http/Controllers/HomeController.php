@@ -11,10 +11,12 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $posts = Post::with('category')->where('category_id', 1)->orderBy('published_at', 'desc')->get();
+        $posts = Post::with('category')->where('category_id', 1)->orderBy('published_at', 'desc')->take(4)
+            ->get();
 
         // 'category_id' 3 is for video posts
-        $video_posts = Post::with('category')->where('category_id', 3)->orderBy('published_at', 'desc')->get();
+        $video_posts = Post::with('category')->where('category_id', 3)->orderBy('published_at', 'desc')->take(3)
+            ->get();
 
         $memberships = Membership::all();
 

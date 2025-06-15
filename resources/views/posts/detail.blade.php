@@ -8,7 +8,7 @@
             @endif
 
             <div class="card-body">
-                <h5 class="card-title fw-bold">{{ $post->title }}</h5>
+                <h5 class="card-title fw-bold">{{ $post->translation()->title ?? 'No translation' }}</h5>
 
                 <p class="text-muted mb-3 small">
                     <i class="bi bi-calendar-event"></i> {{ $post->published_at->format('Y/m/d') }}
@@ -18,7 +18,7 @@
 
                 <div class="card-text" style="line-height: 1.8; font-size: 1.1rem;">
                     {{-- {!! str_replace('<img', '<img class="zoomable-img"', $post->body) !!} --}}
-                    {!! \Illuminate\Support\Str::of($post->body)->replace('<img', '<img class="zoomable-img"') !!}
+                    {!! \Illuminate\Support\Str::of($post->translation()->body)->replace('<img', '<img class="zoomable-img"') !!}
 
                 </div>
 

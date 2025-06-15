@@ -1,0 +1,23 @@
+<?php
+return [
+    'location' => 'Location',
+    'contact_us' => 'Contact Us',
+    'address_line1' => 'Mongolia, Ulaanbaatar city - 15141',
+    'address_line2' => 'Chingeltei District, 5th Khoroo, Sambuu Street-24 MN Tower, 8th Floor',
+    'mnca_office' => 'MNCA NGO Office',
+    'office_room' => 'Room 805, 806',
+    'phone' => '7011151594444173',
+    'email' => 'info@mnca.mn',
+    'permit_department' => 'Construction Activity Special Permit Department',
+    'permit_room' => 'Room 811',
+    'permit_email' => 'tz70165055@gmail.com',
+    'feedback' => 'Send Feedback',
+    'name' => 'Name',
+    'name_placeholder' => 'Your name',
+    'email_label' => 'Email',
+    'email_placeholder' => 'Your email',
+    'message' => 'Feedback',
+    'message_placeholder' => 'Your feedback',
+    'send' => 'Send',
+    'copyright' => 'Mongolian National Construction Association. All rights reserved.',
+];

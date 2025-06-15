@@ -28,14 +28,14 @@ class PostController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title' => 'required|string|max:255',
-            'body' => 'required',
-            'published_at' => 'required|date',
             'category_id' => 'required|exists:categories,id',
+            'published_at' => 'required|date',
             'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:4096',
+            'title.mn' => 'required|string|max:255',
+            'body.mn' => 'nullable|string',
+            'title.en' => 'nullable|string|max:255',
+            'body.en' => 'nullable|string',
         ]);
-
-        $data = $request->only(['title', 'body', 'published_at', 'category_id']);
 
         // Зураг байвал хадгалах
         if ($request->hasFile('image')) {
@@ -43,7 +43,21 @@ class PostController extends Controller
             $data['image'] = $imagePath;
         }
 
-        Post::create($data);
+        $post = new Post();
+        $post->category_id = $request->category_id;
+        $post->published_at = $request->published_at;
+
+        $post->save();
+
+        foreach (['mn', 'en'] as $locale) {
+            if ($request->input("title.$locale")) {
+                $post->translations()->create([
+                    'locale' => $locale,
+                    'title' => $request->input("title.$locale"),
+                    'body' => $request->input("body.$locale"),
+                ]);
+            }
+        }
 
         return redirect()->route('posts.index')->with('success', 'Мэдээ амжилттай нэмэгдлээ');
     }
@@ -59,27 +73,45 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         $request->validate([
-            'title' => 'required|string|max:255',
-            'body' => 'required',
-            'published_at' => 'required|date',
             'category_id' => 'required|exists:categories,id',
-            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'published_at' => 'required|date',
+            'image' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:4096',
+            'title.mn' => 'required|string|max:255',
+            'body.mn' => 'nullable|string',
+            'title.en' => 'nullable|string|max:255',
+            'body.en' => 'nullable|string',
         ]);
 
-        $data = $request->only(['title', 'body', 'published_at', 'category_id']);
+        $post->category_id = $request->category_id;
+        $post->published_at = $request->published_at;
 
-        // Шинэ зураг байвал хадгалаад, хуучныг устгах
+        // Хуучин зураг устгах ба шинэ зургийг хадгалах
         if ($request->hasFile('image')) {
             if ($post->image) {
                 Storage::disk('public')->delete($post->image);
             }
-            $data['image'] = $request->file('image')->store('posts', 'public');
+            $post->image = $request->file('image')->store('posts', 'public');
         }
 
-        $post->update($data);
+        $post->save();
+
+        // Орчуулгуудыг шинэчлэх
+        foreach (['mn', 'en'] as $locale) {
+            $translationData = [
+                'title' => $request->input("title.$locale"),
+                'body' => $request->input("body.$locale"),
+            ];
+
+            // Байгаа бол шинэчлэх, байхгүй бол үүсгэх
+            $post->translations()->updateOrCreate(
+                ['locale' => $locale],
+                $translationData
+            );
+        }
 
         return redirect()->route('posts.index')->with('success', 'Мэдээ амжилттай шинэчлэгдлээ');
     }
+
 
     // Мэдээ устгах
     public function destroy(Post $post)

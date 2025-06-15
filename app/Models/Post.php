@@ -20,4 +20,15 @@ class Post extends Model
     {
         return $this->belongsTo(Category::class);
     }
+
+    public function translations()
+    {
+        return $this->hasMany(PostTranslation::class);
+    }
+
+    public function translation($locale = null)
+    {
+        $locale = $locale ?? app()->getLocale();
+        return $this->translations->where('locale', $locale)->first();
+    }
 }

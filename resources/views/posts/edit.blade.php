@@ -7,12 +7,7 @@
             @csrf
             @method('PUT')
 
-            <div class="mb-3">
-                <label for="title" class="form-label">Гарчиг</label>
-                <input type="text" name="title" id="title" class="form-control"
-                    value="{{ old('title', $post->title) }}" required>
-            </div>
-
+            {{-- Ангилал --}}
             <div class="mb-3">
                 <label for="category_id" class="form-label">Ангилал</label>
                 <select name="category_id" id="category_id" class="form-select" required>
@@ -26,17 +21,14 @@
                 </select>
             </div>
 
+            {{-- Огноо --}}
             <div class="mb-3">
                 <label for="published_at" class="form-label">Огноо</label>
                 <input type="date" name="published_at" id="published_at" class="form-control"
                     value="{{ old('published_at', \Carbon\Carbon::parse($post->published_at)->format('Y-m-d')) }}" required>
             </div>
 
-            <div class="mb-3">
-                <label for="body" class="form-label">Агуулга</label>
-                <textarea name="body" id="body" class="form-control" rows="5" required>{{ old('body', $post->body) }}</textarea>
-            </div>
-
+            {{-- Зураг --}}
             <div class="mb-3">
                 <label for="image" class="form-label">Зураг</label>
                 <input type="file" name="image" id="image" class="form-control">
@@ -47,7 +39,66 @@
                 @endif
             </div>
 
+            {{-- Хэлээр таб хуваарилалт --}}
+            <ul class="nav nav-tabs mb-3" id="langTabs" role="tablist">
+                @foreach (['mn' => 'Монгол', 'en' => 'English'] as $locale => $label)
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link @if ($loop->first) active @endif"
+                            id="{{ $locale }}-tab" data-bs-toggle="tab" data-bs-target="#{{ $locale }}"
+                            type="button" role="tab" aria-controls="{{ $locale }}"
+                            aria-selected="{{ $loop->first ? 'true' : 'false' }}">{{ $label }}</button>
+                    </li>
+                @endforeach
+            </ul>
+
+            <div class="tab-content" id="langTabContent">
+                @foreach (['mn' => 'Монгол', 'en' => 'English'] as $locale => $label)
+                    <div class="tab-pane fade @if ($loop->first) show active @endif"
+                        id="{{ $locale }}" role="tabpanel" aria-labelledby="{{ $locale }}-tab">
+
+                        {{-- Гарчиг --}}
+                        <div class="mb-3">
+                            <label for="title_{{ $locale }}" class="form-label">Гарчиг ({{ $label }})</label>
+                            <input type="text" name="title[{{ $locale }}]" id="title_{{ $locale }}"
+                                class="form-control"
+                                value="{{ old("title.$locale", $post->translations->where('locale', $locale)->first()?->title) }}"
+                                @if ($locale === 'mn') required @endif>
+                        </div>
+
+                        {{-- Агуулга --}}
+                        <div class="mb-3">
+                            <label for="body_{{ $locale }}" class="form-label">Агуулга ({{ $label }})</label>
+                            <textarea name="body[{{ $locale }}]" id="body_{{ $locale }}" class="form-control body" rows="5"
+                                @if ($locale === 'mn') required @endif>{{ old("body.$locale", $post->translations->where('locale', $locale)->first()?->body) }}</textarea>
+                        </div>
+
+                    </div>
+                @endforeach
+            </div>
+
             <button class="btn btn-success mt-2">Шинэчлэх</button>
         </form>
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        $(document).ready(function() {
+            $('.body').summernote({
+                placeholder: 'Агуулгаа энд бичнэ үү...',
+                tabsize: 2,
+                height: 300,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'italic', 'underline', 'clear']],
+                    ['fontname', ['fontname']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture']],
+                    ['view', ['fullscreen', 'codeview', 'help']]
+                ]
+            });
+        });
+    </script>
 @endsection

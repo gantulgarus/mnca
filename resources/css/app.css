@@ -1,5 +1,7 @@
 .custom-navbar .nav-link {
     font-size: 0.8rem; /* эсвэл 12px, 14px гэх мэт */
+    font-weight: 600; /* жишээ нь 500, 600 гэх мэт */
+    text-transform: uppercase; /* бүх үсгийг том болгох */
 }
 
 .custom-login-btn {

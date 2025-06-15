@@ -23,7 +23,8 @@
                         <div class="card-body d-flex flex-column">
                             <a href="{{ route('posts.detail', $post) }}" class="text-decoration-none">
                                 <h6 class="card-title text-dark fw-semibold mb-2" style="line-height: 1.4;">
-                                    {{ Str::limit($post->title, 80) }}
+                                    {{-- {{ Str::limit($post->title, 80) }} --}}
+                                    {{ $post->translation()->title ?? 'No translation' }}
                                 </h6>
                             </a>
 

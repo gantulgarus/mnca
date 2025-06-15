@@ -13,7 +13,7 @@
                                 @if ($posts[0]->image)
                                     <img src="{{ asset('storage/' . $posts[0]->image) }}" class="card-img-top hover-zoom"
                                         style="height: 100%; width: 100%; object-fit: cover; transition: transform 0.5s ease;"
-                                        alt="{{ $posts[0]->title }}" />
+                                        alt="{{ $posts[0]->translation()?->title }}" />
                                 @else
                                     <img src="{{ asset('images/post1.jpg') }}" class="card-img-top hover-zoom"
                                         style="height: 100%; width: 100%; object-fit: cover; transition: transform 0.5s ease;"
@@ -25,7 +25,7 @@
                             <div
                                 style="position: absolute; bottom: 0; left: 0; width: 100%; background: rgba(0, 0, 0, 0.6); color: #fff; padding: 20px;">
                                 <small class="text-white">{{ $posts[0]->published_at->format('Y-m-d') }}</small>
-                                <h6 class="card-title">{{ $posts[0]->title }}</h6>
+                                <h6 class="card-title">{{ $posts[0]->translation()->title }}</h6>
                             </div>
                         </a>
                     </div>
@@ -41,7 +41,7 @@
                                             <img src="{{ asset('storage/' . $post->image) }}"
                                                 class="card-img-top hover-zoom"
                                                 style="height: 150px; object-fit: cover; transition: transform 0.5s ease;"
-                                                alt="{{ $post->title }}" />
+                                                alt="{{ $post->translation()?->title }}" />
                                         @else
                                             <img src="{{ asset('images/post1.jpg') }}" class="card-img-top hover-zoom"
                                                 style="height: 150px; object-fit: cover; transition: transform 0.5s ease;"
@@ -51,7 +51,7 @@
                                             <small class="text-muted">{{ $post->published_at->format('Y-m-d') }}</small>
                                             <h6 class="card-title"
                                                 style="font-size: 0.8rem; line-height: 1.2; margin-top: 5px;">
-                                                {{ Str::limit($post->title, 50) }}</h6>
+                                                {{ Str::limit($post->translation()?->title, 50) }}</h6>
                                         </div>
                                     </a>
                                 </div>
@@ -71,7 +71,7 @@
                     <div class="d-flex justify-content-between gap-2 mb-3 w-100">
                         @foreach ($building_material_prices as $price)
                             <div class="flex-fill stat border rounded p-2 bg-light shadow-sm text-center">
-                                <div class="fw-bold small mb-1">{{ $price->material_name }}</div>
+                                <div class="fw-bold small mb-1">@lang('materials.' . Str::slug($price->material_name, '_'))</div>
                                 <div class="fs-6 fw-bold" style="color: #162450">{{ $price->price }}</div>
                                 <div
                                     class="small
@@ -115,16 +115,16 @@
 
     <!-- Видео мэдээ -->
     <div class="container my-5">
-        <h5 class="mb-4">Видео мэдээ</h5>
+        <h5 class="mb-4">{{ __('section_title.video_news') }}</h5>
         <div class="row g-4">
             @foreach ($video_posts as $video)
                 <div class="col-md-4">
                     <div class="card">
                         <div class="ratio ratio-16x9">
-                            {!! $video->body !!}
+                            {!! $video->translation()?->body !!}
                         </div>
                         <div class="card-body">
-                            <h6 class="card-title">{{ $video->title }}</h6>
+                            <h6 class="card-title">{{ $video->translation()?->title }}</h6>
                         </div>
                     </div>
                 </div>
@@ -135,7 +135,7 @@
 
     <!-- Манай гишүүн байгууллагууд -->
     <div class="container my-5">
-        <h5 class="mb-4 text-center text-uppercase fw-bold" style="letter-spacing: 1px;">Манай гишүүн байгууллагууд</h5>
+        <h5 class="mb-5">{{ __('section_title.member_orgs') }}</h5>
 
         <div class="position-relative">
             <div class="swiper member-swiper py-3" style="height: 150px;">
@@ -166,64 +166,25 @@
 
     <!-- Гишүүнчлэлийн давуу тал -->
     <div class="container py-5">
-        <h4 class="mb-5">Гишүүнчлэлийн давуу тал</h4>
+
+        <h5 class="mb-5">{{ __('benefit.title') }}</h5>
 
         <div class="swiper benefit-swiper" style="height: 260px;">
             <div class="swiper-wrapper">
-                <!-- Slide 1 -->
-                <div class="swiper-slide px-2">
-                    <div class="card benefit-card h-100 text-center p-3">
-                        <div class="text-primary mb-3 fs-1">
-                            <i class="fas fa-bolt"></i>
+                @foreach (__('benefit.items') as $item)
+                    <div class="swiper-slide px-2">
+                        <div class="card benefit-card h-100 text-center p-3">
+                            <div class="{{ $item['color'] ?? '' }} mb-3 fs-1" style="{{ $item['style'] ?? '' }}">
+                                <i class="{{ $item['icon'] }}"></i>
+                            </div>
+                            <h5 class="card-title">{{ $item['title'] }}</h5>
+                            <p class="card-text text-muted">{{ $item['text'] }}</p>
                         </div>
-                        <h5 class="card-title">Мэдээллийн шуурхай хуваалцах</h5>
-                        <p class="card-text text-muted">
-                            Салбарын хамгийн сүүлийн үеийн мэдээг гишүүд шуурхай авч
-                            хэрэглэдэг.
-                        </p>
                     </div>
-                </div>
-
-                <!-- Slide 2 -->
-                <div class="swiper-slide px-2">
-                    <div class="card benefit-card h-100 text-center p-3">
-                        <div class="text-success mb-3 fs-1">
-                            <i class="fas fa-chalkboard-teacher"></i>
-                        </div>
-                        <h5 class="card-title">Сургалт, чадавхижуулалт</h5>
-                        <p class="card-text text-muted">
-                            Мэргэжлийн сургалт, семинарт оролцох боломж гишүүдэд нээлттэй.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Slide 3 -->
-                <div class="swiper-slide px-2">
-                    <div class="card benefit-card h-100 text-center p-3">
-                        <div class="text-purple mb-3 fs-1" style="color: #6f42c1">
-                            <i class="fas fa-handshake"></i>
-                        </div>
-                        <h5 class="card-title">Хамтын ажиллагаа</h5>
-                        <p class="card-text text-muted">
-                            Салбарын байгууллагуудтай хамтран ажиллах боломж бүрдэнэ.
-                        </p>
-                    </div>
-                </div>
-
-                <!-- Slide 4 -->
-                <div class="swiper-slide px-2">
-                    <div class="card benefit-card h-100 text-center p-3">
-                        <div class="text-danger mb-3 fs-1">
-                            <i class="fas fa-comments"></i>
-                        </div>
-                        <h5 class="card-title">Санал бодлоо хүргэх</h5>
-                        <p class="card-text text-muted">
-                            Бодлогын хэлэлцүүлэгт оролцох, нөлөөлөх оролцоог гишүүд эдэлнэ.
-                        </p>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
+
     </div>
 @endsection
 
