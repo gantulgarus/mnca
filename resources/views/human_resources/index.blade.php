@@ -32,8 +32,7 @@
                     <td>{{ $hr->company }}</td>
                     <td>
                         @if ($hr->photo)
-                            <img src="{{ asset('storage/' . $hr->photo) }}" width="50" height="50"
-                                class="rounded-circle">
+                            <img src="{{ asset($hr->photo) }}" width="50" height="50" class="rounded-circle">
                         @endif
                     </td>
                     <td>

@@ -29,11 +29,17 @@ class BookController extends Controller
         ]);
 
         if ($request->hasFile('cover_image')) {
-            $data['cover_image'] = $request->file('cover_image')->store('books/covers', 'public');
+            $image = $request->file('cover_image');
+            $imageName = uniqid() . '.' . $image->extension();
+            $image->move(public_path('images/books/covers'), $imageName);
+            $data['cover_image'] = 'images/books/covers/' . $imageName;
         }
 
         if ($request->hasFile('pdf_file')) {
-            $data['pdf_file'] = $request->file('pdf_file')->store('books/pdfs', 'public');
+            $pdf = $request->file('pdf_file');
+            $pdfName = uniqid() . '.' . $pdf->extension();
+            $pdf->move(public_path('files/books/pdfs'), $pdfName);
+            $data['pdf_file'] = 'files/books/pdfs/' . $pdfName;
         }
 
         Book::create($data);
@@ -57,16 +63,24 @@ class BookController extends Controller
             'title' => 'required|string|max:255',
             'desc' => 'nullable|string',
             'cover_image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
-            'pdf_file' => 'nullable|mimes:pdf|max:10000',
+            'pdf_file' => 'nullable|mimes:pdf|max:25000',
             'published_at' => 'nullable|date',
         ]);
 
+        // Cover image шинэчлэх
         if ($request->hasFile('cover_image')) {
-            $data['cover_image'] = $request->file('cover_image')->store('books/covers', 'public');
+            $image = $request->file('cover_image');
+            $imageName = uniqid() . '.' . $image->extension();
+            $image->move(public_path('images/books/covers'), $imageName);
+            $data['cover_image'] = 'images/books/covers/' . $imageName;
         }
 
+        // PDF шинэчлэх
         if ($request->hasFile('pdf_file')) {
-            $data['pdf_file'] = $request->file('pdf_file')->store('books/pdfs', 'public');
+            $pdf = $request->file('pdf_file');
+            $pdfName = uniqid() . '.' . $pdf->extension();
+            $pdf->move(public_path('files/books/pdfs'), $pdfName);
+            $data['pdf_file'] = 'files/books/pdfs/' . $pdfName;
         }
 
         $book->update($data);

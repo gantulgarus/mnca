@@ -10,7 +10,7 @@
                     <div class="card h-100 shadow-sm">
                         @if ($post->image)
                             <a href="{{ route('posts.detail', $post) }}">
-                                <img src="{{ asset('storage/' . $post->image) }}" class="card-img-top" alt="Post Image"
+                                <img src="{{ asset($post->image) }}" class="card-img-top" alt="Post Image"
                                     style="height: 200px; object-fit: cover;">
                             </a>
                         @else

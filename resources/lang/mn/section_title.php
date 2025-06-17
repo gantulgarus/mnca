@@ -1,6 +1,6 @@
 <?php
 
 return [
-    'video news' => 'Видео мэдээ',
+    'video_news' => 'Видео мэдээ',
     'member_orgs' => 'Гишүүн байгууллагууд',
 ];

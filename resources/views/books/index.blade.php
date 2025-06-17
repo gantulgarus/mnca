@@ -10,11 +10,11 @@
                     <h4>{{ $book->title }}</h4>
                     <p>{{ $book->desc }}</p>
                     @if ($book->cover_image)
-                        <img src="{{ asset('storage/' . $book->cover_image) }}" alt="" width="100">
+                        <img src="{{ asset($book->cover_image) }}" alt="" width="100">
                     @endif
                     <br>
                     @if ($book->pdf_file)
-                        <a href="{{ asset('storage/' . $book->pdf_file) }}" target="_blank">View PDF</a>
+                        <a href="{{ asset($book->pdf_file) }}" target="_blank">View PDF</a>
                     @endif
                     <p>Published at: {{ $book->published_at }}</p>
                     <a href="{{ route('books.edit', $book) }}" class="btn btn-sm btn-warning">Edit</a>

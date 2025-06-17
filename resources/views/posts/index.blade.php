@@ -27,7 +27,7 @@
                         <td>{{ \Carbon\Carbon::parse($post->published_at)->format('Y/m/d') }}</td>
                         <td>
                             @if ($post->image)
-                                <img src="{{ asset('storage/' . $post->image) }}" width="100">
+                                <img src="{{ asset($post->image) }}" width="100">
                             @else
                                 -
                             @endif

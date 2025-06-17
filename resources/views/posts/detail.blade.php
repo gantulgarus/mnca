@@ -3,7 +3,7 @@
     <div class="container py-4">
         <div class="card shadow-lg border-0 rounded-4">
             @if ($post->image)
-                <img src="{{ asset('storage/' . $post->image) }}" class="card-img-top rounded-top-4" alt="Post image"
+                <img src="{{ asset($post->image) }}" class="card-img-top rounded-top-4" alt="Post image"
                     style="height: 300px; object-fit: cover;">
             @endif
 

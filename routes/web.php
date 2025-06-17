@@ -42,7 +42,6 @@ Route::get('/posts/detail/{post}', [PostController::class, 'detail'])->name('pos
 Route::get('/memberships/list', [MembershipController::class, 'list'])->name('memberships.list');
 Route::get('/books/list', [BookController::class, 'list'])->name('books.list');
 
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');

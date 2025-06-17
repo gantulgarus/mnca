@@ -32,7 +32,10 @@ class HumanResourceController extends Controller
         ]);
 
         if ($request->hasFile('photo')) {
-            $validated['photo'] = $request->file('photo')->store('photos', 'public');
+            $image = $request->file('photo');
+            $imageName = uniqid() . '.' . $image->extension();
+            $image->move(public_path('images/human_resources'), $imageName);
+            $validated['photo'] = 'images/human_resources/' . $imageName;
         }
 
         HumanResource::create($validated);
@@ -62,11 +65,15 @@ class HumanResourceController extends Controller
         ]);
 
         if ($request->hasFile('photo')) {
-            // хуучин зургийг устгах
-            if ($humanResource->photo) {
-                Storage::disk('public')->delete($humanResource->photo);
+            // Хуучин зураг устгах
+            if ($humanResource->photo && file_exists(public_path($humanResource->photo))) {
+                unlink(public_path($humanResource->photo));
             }
-            $validated['photo'] = $request->file('photo')->store('photos', 'public');
+
+            $image = $request->file('photo');
+            $imageName = uniqid() . '.' . $image->extension();
+            $image->move(public_path('images/human_resources'), $imageName);
+            $validated['photo'] = 'images/human_resources/' . $imageName;
         }
 
         $humanResource->update($validated);
@@ -76,10 +83,6 @@ class HumanResourceController extends Controller
 
     public function destroy(HumanResource $humanResource)
     {
-        if ($humanResource->photo) {
-            Storage::disk('public')->delete($humanResource->photo);
-        }
-
         $humanResource->delete();
 
         return redirect()->route('human-resources.index')->with('success', 'Амжилттай устгагдлаа.');

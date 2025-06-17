@@ -11,7 +11,7 @@
                         {{-- Зураг хэсэг --}}
                         @if ($book->cover_image)
                             <div class="col-md-5">
-                                <img src="{{ asset('storage/' . $book->cover_image) }}" alt="{{ $book->title }}"
+                                <img src="{{ asset($book->cover_image) }}" alt="{{ $book->title }}"
                                     class="img-fluid h-100 w-100" style="object-fit: cover;">
                             </div>
                         @endif
@@ -30,15 +30,14 @@
 
                             <div class="mt-auto d-flex gap-2">
                                 @if ($book->pdf_file)
-                                    <a href="{{ asset('storage/' . $book->pdf_file) }}" class="btn btn-sm btn-primary px-3"
-                                        download>
+                                    <a href="{{ asset($book->pdf_file) }}" class="btn btn-sm btn-primary px-3" download>
                                         <i class="bi bi-download"></i> Татах
                                     </a>
                                 @endif
 
                                 <a href="#" class="btn btn-sm btn-outline-primary px-3 btn-pdf-view"
                                     data-bs-toggle="modal" data-bs-target="#pdfModal"
-                                    data-pdf-url="{{ $book->pdf_file ? asset('storage/' . $book->pdf_file) : '' }}">
+                                    data-pdf-url="{{ $book->pdf_file ? asset($book->pdf_file) : '' }}">
                                     <i class="bi bi-info-circle"></i> Унших
                                 </a>
                             </div>

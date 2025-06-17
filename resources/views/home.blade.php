@@ -11,7 +11,7 @@
                         <a href="{{ route('posts.detail', $posts[0]->id) }}" style="text-decoration: none; color: inherit;">
                             <div style="height: 100%; width: 100%; overflow: hidden;">
                                 @if ($posts[0]->image)
-                                    <img src="{{ asset('storage/' . $posts[0]->image) }}" class="card-img-top hover-zoom"
+                                    <img src="{{ asset($posts[0]->image) }}" class="card-img-top hover-zoom"
                                         style="height: 100%; width: 100%; object-fit: cover; transition: transform 0.5s ease;"
                                         alt="{{ $posts[0]->translation()?->title }}" />
                                 @else
@@ -38,8 +38,7 @@
                                     <a href="{{ route('posts.detail', $post->id) }}"
                                         style="text-decoration: none; color: inherit;">
                                         @if ($post->image)
-                                            <img src="{{ asset('storage/' . $post->image) }}"
-                                                class="card-img-top hover-zoom"
+                                            <img src="{{ asset($post->image) }}" class="card-img-top hover-zoom"
                                                 style="height: 150px; object-fit: cover; transition: transform 0.5s ease;"
                                                 alt="{{ $post->translation()?->title }}" />
                                         @else
@@ -144,8 +143,8 @@
                         <div class="swiper-slide">
                             <div class="d-flex justify-content-center align-items-center h-100 px-3">
                                 @if ($member->logo)
-                                    <img src="{{ asset('storage/' . $member->logo) }}"
-                                        alt="{{ $member->organization_name }}" class="img-fluid member-logo"
+                                    <img src="{{ asset($member->logo) }}" alt="{{ $member->organization_name }}"
+                                        class="img-fluid member-logo"
                                         onerror="this.onerror=null;this.src='{{ asset('images/default-logo.png') }}'" />
                                 @else
                                     <div class="member-logo-alt d-flex align-items-center justify-content-center">

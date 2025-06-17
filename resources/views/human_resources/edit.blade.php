@@ -38,8 +38,7 @@
         <div class="mb-3">
             <label class="form-label">Зураг</label><br>
             @if ($humanResource->photo)
-                <img src="{{ asset('storage/' . $humanResource->photo) }}" width="80" height="80"
-                    class="mb-2 rounded">
+                <img src="{{ asset($humanResource->photo) }}" width="80" height="80" class="mb-2 rounded">
             @endif
             <input type="file" name="photo" class="form-control">
         </div>

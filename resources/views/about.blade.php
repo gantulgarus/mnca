@@ -163,8 +163,8 @@
                                     <div class="card border-0 shadow-sm h-100 transition-all hover-scale">
                                         <div class="card-body d-flex flex-column align-items-center p-3">
                                             <div class="position-relative mb-3">
-                                                <img src="{{ asset('storage/' . $person->photo) }}"
-                                                    alt="{{ $person->name }}" class="rounded-circle"
+                                                <img src="{{ asset($person->photo) }}" alt="{{ $person->name }}"
+                                                    class="rounded-circle"
                                                     style="width: 120px; height: 120px; object-fit: cover; border: 4px solid #f8f9fa;">
                                             </div>
                                             <h6 class="fw-bold mb-1 text-center">{{ $person->name }}</h6>

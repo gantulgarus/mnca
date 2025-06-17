@@ -29,8 +29,7 @@
                         <td>{{ $membership->phone }}</td>
                         <td>
                             @if ($membership->logo)
-                                <img src="{{ asset('storage/' . $membership->logo) }}" alt="Logo" class="img-thumbnail"
-                                    width="100">
+                                <img src="{{ asset($membership->logo) }}" alt="Logo" class="img-thumbnail" width="100">
                             @endif
                         </td>
                         <td>

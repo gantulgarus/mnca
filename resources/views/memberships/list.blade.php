@@ -31,7 +31,7 @@
                             <div class="card-img-top bg-light d-flex align-items-center justify-content-center"
                                 style="height: 120px; overflow: hidden;">
                                 @if ($member->logo)
-                                    <img src="{{ asset('storage/' . $member->logo) }}" class="img-fluid p-3"
+                                    <img src="{{ asset($member->logo) }}" class="img-fluid p-3"
                                         alt="{{ $member->organization_name }}" style="max-height: 100%; width: auto;">
                                 @else
                                     <div class="text-center text-muted p-3">

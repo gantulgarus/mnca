@@ -1,6 +1,6 @@
 <?php
 return [
-    'about' => 'Тухай',
+    'about' => 'Танилцуулга',
     'membership' => 'Гишүүнчлэл',
     'news' => 'Мэдээ',
     'publications' => 'Ном, сэтгүүл',

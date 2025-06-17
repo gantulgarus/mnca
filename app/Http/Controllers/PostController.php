@@ -39,14 +39,15 @@ class PostController extends Controller
 
         // Зураг байвал хадгалах
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('posts', 'public');
-            $data['image'] = $imagePath;
+            $imageName = uniqid() . '.' . $request->image->extension();
+            $request->image->move(public_path('images/posts'), $imageName);
+            $data['image'] = 'images/posts/' . $imageName;
         }
 
         $post = new Post();
         $post->category_id = $request->category_id;
         $post->published_at = $request->published_at;
-
+        $post->image = $data['image'] ?? null;
         $post->save();
 
         foreach (['mn', 'en'] as $locale) {
@@ -85,24 +86,25 @@ class PostController extends Controller
         $post->category_id = $request->category_id;
         $post->published_at = $request->published_at;
 
-        // Хуучин зураг устгах ба шинэ зургийг хадгалах
         if ($request->hasFile('image')) {
-            if ($post->image) {
-                Storage::disk('public')->delete($post->image);
+            // Хуучин зураг устгах
+            if ($post->image && file_exists(public_path($post->image))) {
+                unlink(public_path($post->image));
             }
-            $post->image = $request->file('image')->store('posts', 'public');
+
+            $imageName = uniqid() . '.' . $request->image->extension();
+            $request->image->move(public_path('images/posts'), $imageName);
+            $post->image = 'images/posts/' . $imageName;
         }
 
         $post->save();
 
-        // Орчуулгуудыг шинэчлэх
         foreach (['mn', 'en'] as $locale) {
             $translationData = [
                 'title' => $request->input("title.$locale"),
                 'body' => $request->input("body.$locale"),
             ];
 
-            // Байгаа бол шинэчлэх, байхгүй бол үүсгэх
             $post->translations()->updateOrCreate(
                 ['locale' => $locale],
                 $translationData
@@ -116,10 +118,6 @@ class PostController extends Controller
     // Мэдээ устгах
     public function destroy(Post $post)
     {
-        if ($post->image) {
-            Storage::disk('public')->delete($post->image);
-        }
-
         $post->delete();
         return redirect()->route('posts.index')->with('success', 'Мэдээ амжилттай устгагдлаа');
     }

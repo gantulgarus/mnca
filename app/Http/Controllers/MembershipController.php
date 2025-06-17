@@ -36,7 +36,10 @@ class MembershipController extends Controller
         ]);
 
         if ($request->hasFile('logo')) {
-            $validated['logo'] = $request->file('logo')->store('logos', 'public');
+            $image = $request->file('logo');
+            $imageName = uniqid() . '.' . $image->extension();
+            $image->move(public_path('images/logo'), $imageName);
+            $validated['logo'] = 'images/logo/' . $imageName;
         }
 
         Membership::create($validated);
@@ -71,7 +74,11 @@ class MembershipController extends Controller
         ]);
 
         if ($request->hasFile('logo')) {
-            $validated['logo'] = $request->file('logo')->store('logos', 'public');
+            // Хуучин зургийг устгахыг хүсвэл энд нэмнэ
+            $image = $request->file('logo');
+            $imageName = uniqid() . '.' . $image->extension();
+            $image->move(public_path('images/logo'), $imageName);
+            $validated['logo'] = 'images/logo/' . $imageName;
         }
 
         $membership->update($validated);

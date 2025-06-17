@@ -27,7 +27,7 @@
             <div class="mb-3">
                 <label class="form-label">Одоогийн зураг:</label><br>
                 @if ($book->cover_image)
-                    <img src="{{ asset('storage/' . $book->cover_image) }}" alt="cover" width="120">
+                    <img src="{{ $book->cover_image }}" alt="cover" width="120">
                 @else
                     <p>Зураг оруулаагүй</p>
                 @endif
@@ -41,7 +41,7 @@
             <div class="mb-3">
                 <label class="form-label">Одоогийн PDF файл:</label><br>
                 @if ($book->pdf_file)
-                    <a href="{{ asset('storage/' . $book->pdf_file) }}" target="_blank">Одоо байгаа PDF үзэх</a>
+                    <a href="{{ asset($book->pdf_file) }}" target="_blank">Одоо байгаа PDF үзэх</a>
                 @else
                     <p>Файл оруулаагүй</p>
                 @endif
