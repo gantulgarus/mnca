@@ -103,17 +103,34 @@
                 placeholder: 'Агуулгаа энд бичнэ үү...',
                 tabsize: 2,
                 height: 300,
-                toolbar: [
-                    ['style', ['style']],
-                    ['font', ['bold', 'italic', 'underline', 'clear']],
-                    ['fontname', ['fontname']],
-                    ['color', ['color']],
-                    ['para', ['ul', 'ol', 'paragraph']],
-                    ['table', ['table']],
-                    ['insert', ['link', 'picture']],
-                    ['view', ['fullscreen', 'codeview', 'help']]
-                ]
+                callbacks: {
+                    onImageUpload: function(files) {
+                        uploadImage(files[0], $(this));
+                    }
+                }
             });
+
+            function uploadImage(file, editor) {
+                var formData = new FormData();
+                formData.append('image', file);
+
+                $.ajax({
+                    url: '/upload-summernote-image',
+                    method: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                    },
+                    success: function(response) {
+                        editor.summernote('insertImage', response.url);
+                    },
+                    error: function(xhr) {
+                        console.error("Зураг нэмэхэд алдаа гарлаа", xhr.responseText);
+                    }
+                });
+            }
         });
     </script>
 @endsection

@@ -4,9 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use App\Models\Category;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Intervention\Image\Image;
+use Intervention\Image\ImageManager;
+use Illuminate\Support\Facades\Storage;
 
 class PostController extends Controller
 {
@@ -61,6 +63,11 @@ class PostController extends Controller
         }
 
         return redirect()->route('posts.index')->with('success', 'Мэдээ амжилттай нэмэгдлээ');
+    }
+
+    public function show(Post $post)
+    {
+        return view('posts.show', compact('post'));
     }
 
     // Мэдээ засварлах форм
@@ -130,5 +137,26 @@ class PostController extends Controller
     public function detail(Post $post)
     {
         return view('posts.detail', compact('post'));
+    }
+
+    public function upload(Request $request)
+    {
+        $request->validate([
+            'image' => [
+                'required',
+                'image',
+                'mimes:jpeg,png,jpg,gif,svg',
+                'max:20480'
+            ],
+        ]);
+
+
+        $filename = uniqid() . '.' . $request->image->getClientOriginalExtension();
+
+        $request->image->move(public_path('images/summernote'), $filename);
+
+        return response()->json([
+            'url' => asset("images/summernote/$filename")
+        ]);
     }
 }

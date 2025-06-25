@@ -53,6 +53,7 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('human-resources', HumanResourceController::class);
     Route::resource('posts', PostController::class);
+    Route::post('/upload-summernote-image', [PostController::class, 'upload'])->name('summernote.upload');
     Route::resource('memberships', MembershipController::class);
     Route::resource('building_material_prices', BuildingMaterialPriceController::class);
     Route::resource('books', BookController::class);
