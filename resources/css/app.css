@@ -78,62 +78,6 @@
     }
 }
 
-.member-swiper {
-    padding: 0 40px;
-}
-
-.member-logo {
-    max-height: 50px;
-    max-width: 150px;
-    width: auto;
-    object-fit: contain;
-    filter: grayscale(100%);
-    opacity: 0.7;
-    transition: all 0.3s ease;
-}
-
-.member-logo:hover {
-    filter: grayscale(0);
-    opacity: 1;
-    transform: scale(1.05);
-}
-
-.member-logo-alt {
-    height: 50px;
-    width: 100px;
-    background-color: #f8f9fa;
-    color: #6c757d;
-    font-weight: bold;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.member-swiper-prev,
-.member-swiper-next {
-    color: #333;
-    background: rgba(255, 255, 255, 0.8);
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-.member-swiper-prev::after,
-.member-swiper-next::after {
-    font-size: 14px;
-    font-weight: bold;
-}
-
-.member-swiper-prev {
-    left: 0;
-}
-
-.member-swiper-next {
-    right: 0;
-}
-
 .footer-with-bg {
     background-color: #343a40;
 }
@@ -185,4 +129,714 @@ footer {
 .swiper-slide img {
     position: relative;
     z-index: 0;
+}
+
+.social-fixed {
+    position: fixed;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    z-index: 9999;
+}
+
+.social-btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 45px;
+    height: 45px;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px 0 0 5px;
+    overflow: hidden;
+    transition: width 0.3s;
+    padding-left: 10px;
+    position: relative;
+}
+
+.social-btn i {
+    font-size: 18px;
+    flex-shrink: 0;
+}
+
+.social-text {
+    margin-left: 10px;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+/* Hover effect: slide out */
+.social-btn:hover {
+    width: 140px; /* Эхний 45px + text гарч ирэх хэмжээ */
+}
+
+.social-btn:hover .social-text {
+    opacity: 1;
+}
+
+/* Facebook */
+.social-btn.facebook {
+    background: #1877f2;
+}
+
+.social-btn.facebook:hover {
+    background: #145dbf;
+}
+
+/* X button */
+.social-btn.x {
+    background: #000; /* X black */
+}
+
+.social-btn.x:hover {
+    background: #333;
+}
+
+/* LinkedIn */
+.social-btn.linkedin {
+    background: #0077b5;
+}
+
+.social-btn.linkedin:hover {
+    background: #005983;
+}
+
+/* Post card styles */
+.post-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0));
+    padding: 20px 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    transition: all 0.3s ease;
+}
+
+.text-white-80 {
+    color: rgba(255, 255, 255, 0.8) !important;
+}
+
+.small-overlay {
+    padding: 15px 12px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+}
+
+.card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+    border-radius: 12px;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.card-img-top {
+    transition: transform 0.3s ease;
+}
+
+.card:hover .card-img-top {
+    transform: scale(1.05);
+}
+
+.post-overlay h6 {
+    transition: transform 0.3s ease;
+    font-weight: 600;
+}
+
+.card:hover .post-overlay h6 {
+    transform: translateY(-2px);
+}
+
+/* Category tag */
+.category-tag {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #333;
+}
+
+/* Read more indicator */
+.read-more {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(255, 255, 255, 0.9);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.card:hover .read-more {
+    opacity: 1;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .post-overlay {
+        padding: 15px 12px;
+    }
+
+    .small-overlay {
+        padding: 12px 10px;
+    }
+}
+
+/* Vertical banner - өндөр */
+.banner-tall .swiper-slide img {
+    height: 650px;
+    min-height: 500px;
+    object-fit: cover;
+    width: 100%;
+}
+
+/* Horizontal banner - бага өндөр */
+.banner-short .swiper-slide img {
+    height: 300px;
+    min-height: 250px;
+    object-fit: cover;
+    width: 100%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .banner-tall .swiper-slide img {
+        height: 400px;
+        min-height: 350px;
+    }
+
+    .banner-short .swiper-slide img {
+        height: 250px;
+        min-height: 200px;
+    }
+}
+
+.price-swiper-prev,
+.price-swiper-next {
+    color: #162450;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    margin-top: 0 !important;
+    /* Swiper-ийн default margin-ыг устгах */
+}
+
+.price-swiper-prev:after,
+.price-swiper-next:after {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.price-swiper-prev {
+    left: -15px;
+    /* Swiper-ийн гадна талд байрлуулах */
+}
+
+.price-swiper-next {
+    right: -15px;
+    /* Swiper-ийн гадна талд байрлуулах */
+}
+
+/* Make sure buttons are visible */
+.price-swiper-prev.swiper-button-disabled,
+.price-swiper-next.swiper-button-disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.price-swiper-prev:not(.swiper-button-disabled):hover,
+.price-swiper-next:not(.swiper-button-disabled):hover {
+    background: rgba(255, 255, 255, 0.95);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Swiper container-д padding нэмж, сумнууд гадна талд гарч ирэхэд зориулах */
+.price-swiper-container {
+    position: relative;
+    padding: 0 25px;
+    /* Сумнууд гадна талд байрлахад зориулж padding нэмэх */
+}
+
+/* Mobile дээр сумнуудыг багасгах */
+@media (max-width: 768px) {
+    .price-swiper-prev,
+    .price-swiper-next {
+        width: 30px;
+        height: 30px;
+    }
+
+    .price-swiper-prev:after,
+    .price-swiper-next:after {
+        font-size: 14px;
+    }
+
+    .price-swiper-prev {
+        left: -10px;
+    }
+
+    .price-swiper-next {
+        right: -10px;
+    }
+
+    .price-swiper-container {
+        padding: 0 20px;
+    }
+}
+
+/* Benefit Section Styles */
+.benefit-swiper {
+    padding: 20px 10px;
+    margin: -20px -10px;
+}
+
+.benefit-card {
+    border: none;
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    overflow: hidden;
+    position: relative;
+}
+
+.benefit-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, #203074, #3a56b4);
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+}
+
+.benefit-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(32, 48, 116, 0.15);
+}
+
+.benefit-card:hover::before {
+    transform: scaleX(1);
+}
+
+.benefit-card .fs-1 {
+    transition: all 0.4s ease;
+    position: relative;
+}
+
+.benefit-card:hover .fs-1 {
+    transform: scale(1.1);
+}
+
+/* Icon colors and effects */
+.benefit-card .text-primary {
+    color: #203074 !important;
+}
+
+.benefit-card .text-success {
+    color: #28a745 !important;
+}
+
+.benefit-card .text-info {
+    color: #17a2b8 !important;
+}
+
+.benefit-card .text-warning {
+    color: #ffc107 !important;
+}
+
+.benefit-card .text-danger {
+    color: #dc3545 !important;
+}
+
+/* Card title and text */
+.benefit-card .card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #203074;
+    margin-bottom: 0.75rem;
+    transition: color 0.3s ease;
+}
+
+.benefit-card:hover .card-title {
+    color: #3a56b4;
+}
+
+.benefit-card .card-text {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #6c757d;
+}
+
+/* Swiper navigation for benefits */
+.benefit-swiper .swiper-pagination {
+    bottom: -5px !important;
+}
+
+.benefit-swiper .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    background: #dee2e6;
+    opacity: 1;
+}
+
+.benefit-swiper .swiper-pagination-bullet-active {
+    background: #203074;
+}
+
+/* Gradient backgrounds for icons */
+.icon-gradient-primary {
+    background: linear-gradient(135deg, #203074, #3a56b4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.icon-gradient-success {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.icon-gradient-info {
+    background: linear-gradient(135deg, #17a2b8, #6f42c1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .benefit-swiper {
+        height: 300px !important;
+        padding: 15px 5px;
+        margin: -15px -5px;
+    }
+
+    .benefit-card {
+        padding: 1.5rem 1rem !important;
+    }
+
+    .benefit-card .fs-1 {
+        font-size: 2.5rem !important;
+    }
+
+    .benefit-card .card-title {
+        font-size: 1rem;
+    }
+
+    .benefit-card .card-text {
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .benefit-swiper {
+        height: 320px !important;
+    }
+
+    .benefit-card {
+        padding: 1.25rem 0.75rem !important;
+    }
+}
+
+/* Member Organizations Section */
+.member-section {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    margin: 2rem 0;
+}
+
+.member-swiper {
+    padding: 2rem 0;
+    margin: -2rem 0;
+}
+
+.member-slide {
+    padding: 1rem;
+    transition: all 0.4s ease;
+}
+
+.member-logo-container {
+    background: white;
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(32, 48, 116, 0.1);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative;
+    overflow: hidden;
+}
+
+.member-logo-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(32, 48, 116, 0.05),
+        transparent
+    );
+    transition: left 0.6s ease;
+}
+
+.member-logo-container:hover::before {
+    left: 100%;
+}
+
+.member-logo-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 40px rgba(32, 48, 116, 0.15);
+    border-color: rgba(32, 48, 116, 0.3);
+}
+
+/* Лого анхнаас өнгөтэй байх */
+.member-logo {
+    max-height: 60px;
+    max-width: 160px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    filter: grayscale(0%) brightness(1); /* Анхнаас өнгөтэй */
+    opacity: 1; /* Анхнаас тод */
+    transition: all 0.4s ease;
+}
+
+.member-logo-container:hover .member-logo {
+    filter: grayscale(0%) brightness(1.1); /* Hover үед илүү тод */
+    opacity: 1;
+    transform: scale(1.05);
+}
+
+.member-logo-alt {
+    height: 60px;
+    width: 120px;
+    background: linear-gradient(135deg, #203074, #3a56b4);
+    color: white;
+    font-weight: 700;
+    font-size: 1.1rem;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease;
+    box-shadow: 0 4px 15px rgba(32, 48, 116, 0.2);
+}
+
+.member-logo-container:hover .member-logo-alt {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(32, 48, 116, 0.3);
+}
+
+/* Navigation buttons */
+.member-swiper-prev,
+.member-swiper-next {
+    color: #203074;
+    background: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    z-index: 1000 !important; /* Өндөр z-index нэмэх */
+    cursor: pointer;
+}
+
+.member-swiper-prev::after,
+.member-swiper-next::after {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.member-swiper-prev:hover,
+.member-swiper-next:hover {
+    background: #203074;
+    color: white;
+    transform: scale(1.1);
+    box-shadow: 0 6px 25px rgba(32, 48, 116, 0.3);
+}
+
+.member-swiper-prev {
+    left: -25px;
+}
+
+.member-swiper-next {
+    right: -25px;
+}
+
+/* Swiper pagination */
+.member-swiper .swiper-pagination {
+    bottom: -10px !important;
+}
+
+.member-swiper .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    background: #dee2e6;
+    opacity: 1;
+    transition: all 0.3s ease;
+}
+
+.member-swiper .swiper-pagination-bullet-active {
+    background: #203074;
+    width: 20px;
+    border-radius: 10px;
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+    .member-section {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .member-logo-container {
+        padding: 1.5rem 1rem;
+        height: 110px;
+    }
+
+    .member-logo {
+        max-height: 55px;
+        max-width: 140px;
+    }
+}
+
+@media (max-width: 768px) {
+    .member-section {
+        padding: 2rem 1rem;
+        border-radius: 16px;
+        margin: 1rem 0;
+    }
+
+    .member-title {
+        font-size: 1.8rem;
+    }
+
+    .member-subtitle {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    .member-logo-container {
+        padding: 1.5rem 1rem;
+        height: 100px;
+    }
+
+    .member-logo {
+        max-height: 50px;
+        max-width: 120px;
+    }
+
+    .member-logo-alt {
+        height: 50px;
+        width: 100px;
+        font-size: 1rem;
+    }
+
+    .member-swiper-prev,
+    .member-swiper-next {
+        width: 40px;
+        height: 40px;
+    }
+
+    .member-swiper-prev::after,
+    .member-swiper-next::after {
+        font-size: 14px;
+    }
+
+    .member-swiper-prev {
+        left: -15px;
+    }
+
+    .member-swiper-next {
+        right: -15px;
+    }
+}
+
+@media (max-width: 576px) {
+    .member-section {
+        padding: 1.5rem 0.75rem;
+    }
+
+    .member-title {
+        font-size: 1.5rem;
+    }
+
+    .member-logo-container {
+        height: 90px;
+        padding: 1rem 0.5rem;
+    }
+
+    .member-logo {
+        max-height: 45px;
+        max-width: 100px;
+    }
+}
+
+/* Section Titles - Unified Style */
+.section-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    background: linear-gradient(135deg, #203074, #3a56b4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-align: center;
+    margin-bottom: 1rem;
+    position: relative;
+    padding-bottom: 1rem;
+}
+
+.section-title::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, #203074, #3a56b4);
+    border-radius: 2px;
+}
+
+.section-subtitle {
+    text-align: center;
+    color: #6c757d;
+    font-size: 1rem;
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    line-height: 1.6;
 }

@@ -14,6 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&display=swap" rel="stylesheet">
     @yield('styles')
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @livewireStyles
 </head>
 
 <body>
@@ -26,10 +27,29 @@
 
     @yield('content')
 
+    <!-- Social Fixed Buttons -->
+    <div class="social-fixed d-flex flex-column gap-2">
+        <a href="https://www.facebook.com/mnca.mn/" target="_blank" class="social-btn facebook">
+            <i class="fab fa-facebook-f"></i>
+            <span class="social-text">Facebook</span>
+        </a>
+        <a href="https://x.com/undesniibarilga" target="_blank" class="social-btn x">
+            <i class="fab fa-x-twitter"></i> <!-- FontAwesome 6.5+ дээр X icon -->
+            <span class="social-text">X</span>
+        </a>
+        <a href="https://www.linkedin.com/company/mnca-mn-counseling-association" target="_blank"
+            class="social-btn linkedin">
+            <i class="fab fa-linkedin-in"></i>
+            <span class="social-text">LinkedIn</span>
+        </a>
+    </div>
+
+
     <!-- Footer хэсэг -->
     @include('layouts.footer')
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    @livewireScripts
     @yield('scripts')
 
 </body>

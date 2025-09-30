@@ -2,9 +2,9 @@
     <div
         class="container d-flex flex-column flex-lg-row justify-content-between align-items-start align-items-lg-center py-2">
 
-        <!-- Contact Info -->
+        <!-- Contact Info (hide on small screens) -->
         <div
-            class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center small text-white mb-2 mb-lg-0">
+            class="d-none d-md-flex flex-column flex-sm-row align-items-start align-items-sm-center small text-white mb-2 mb-lg-0">
             <span class="me-sm-3">
                 <i class="bi bi-telephone-fill"></i> (+976) 7011 1515
             </span>
@@ -16,7 +16,7 @@
             </span>
         </div>
 
-        <!-- Language Switch & Social Icons -->
+        <!-- Language Switch & Social Icons (always visible) -->
         <div class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center small text-white">
             <!-- Language Switch -->
             <div class="mb-2 mb-sm-0 me-sm-4">
@@ -27,12 +27,12 @@
             </div>
 
             <!-- Social Icons -->
-            <div>
+            <div class="d-none d-md-flex align-items-center">
                 <a href="https://www.facebook.com/mnca.mn/" target="_blank" class="text-white me-3">
                     <i class="bi bi-facebook"></i>
                 </a>
-                <a href="https://twitter.com/undesniibarilga" target="_blank" class="text-white me-3">
-                    <i class="bi bi-twitter"></i>
+                <a href="https://x.com/undesniibarilga" target="_blank" class="text-white me-3">
+                    <i class="fab fa-x-twitter"></i>
                 </a>
                 <a href="https://www.linkedin.com/company/mnca-mn-counseling-association" target="_blank"
                     class="text-white">

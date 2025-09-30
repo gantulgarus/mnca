@@ -6,7 +6,7 @@ return [
     'address_line2' => 'Chingeltei District, 5th Khoroo, Sambuu Street-24 MN Tower, 8th Floor',
     'mnca_office' => 'MNCA NGO Office',
     'office_room' => 'Room 805, 806',
-    'phone' => '7011151594444173',
+    'phone' => '70111515 94444173',
     'email' => 'info@mnca.mn',
     'permit_department' => 'Construction Activity Special Permit Department',
     'permit_room' => 'Room 811',
