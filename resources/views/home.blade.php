@@ -99,6 +99,44 @@
             <div class="swiper-pagination"></div>
         </div>
     </div>
+
+    <!-- Нээлттэй цаг -->
+    <div class="container my-5 open-hour-section">
+        <h2 class="section-title">Нээлттэй цаг</h2>
+        <p class="section-subtitle">Нээлттэй цагийн мэдээ, мэдээлэл</p>
+        @livewire('open-hour-posts-list')
+    </div>
+
+    <!-- Хамтын ажиллагаа -->
+    <div class="container my-5 collaboration-section">
+        <h2 class="section-title">Хамтын ажиллагаа</h2>
+        <p class="section-subtitle">Бидний хамтран ажилладаг байгууллагууд</p>
+
+        <div class="swiper collaboration-swiper mb-4" style="height: 120px;">
+            <div class="swiper-wrapper">
+                @foreach ($collaborations as $item)
+                    <div class="swiper-slide px-2 d-flex justify-content-center align-items-center">
+                        <div class="card collaboration-card h-100 text-center p-2 d-flex justify-content-center align-items-center"
+                            style="height: 100px;" data-bs-toggle="tooltip" data-bs-placement="top"
+                            title="{{ $item->name }}">
+                            @if ($item->image)
+                                <img src="{{ asset($item->image) }}" alt="{{ $item->name }}"
+                                    class="collaboration-img img-fluid" style="max-height: 80px; object-fit: contain;">
+                            @else
+                                <div class="d-flex align-items-center justify-content-center border rounded p-2 bg-light"
+                                    style="width: 150px; height: 80px;">
+                                    <span class="text-muted text-center small">{{ $item->name }}</span>
+                                </div>
+                            @endif
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+
+            <!-- Pagination -->
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
 @endsection
 
 @section('scripts')
@@ -106,10 +144,15 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            console.log('DOM loaded, initializing swipers...');
+            // Bootstrap tooltip идэвхжүүлэх
+            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+            tooltipTriggerList.map(function(tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl)
+            })
 
             // Initialize all banner swipers
             const bannerSwipers = document.querySelectorAll('.banner-swiper');
-
             bannerSwipers.forEach((swiperElement) => {
                 new Swiper(swiperElement, {
                     loop: true,
@@ -138,10 +181,6 @@
                     loop: false,
                     slidesPerView: 3,
                     spaceBetween: 10,
-                    // autoplay: {
-                    //     delay: 3000,
-                    //     disableOnInteraction: false,
-                    // },
                     pagination: {
                         el: priceSwiperElement.querySelector('.swiper-pagination'),
                         clickable: true,
@@ -237,17 +276,20 @@
                 }
             });
 
-            // Hover effect for member logos
-            const memberLogos = document.querySelectorAll('.member-logo');
-            memberLogos.forEach(logo => {
-                logo.addEventListener('mouseenter', () => {
-                    logo.style.filter = 'grayscale(0)';
-                    logo.style.opacity = '1';
-                });
-                logo.addEventListener('mouseleave', () => {
-                    logo.style.filter = 'grayscale(100%)';
-                    logo.style.opacity = '0.7';
-                });
+            // Collaboration Swiper
+            const collaborationSwiperSelector = new Swiper(".collaboration-swiper", {
+                loop: true,
+                slidesPerView: 3,
+                spaceBetween: 25,
+                autoplay: {
+                    delay: 4000,
+                    disableOnInteraction: false,
+                },
+                pagination: {
+                    el: ".collaboration-swiper .swiper-pagination",
+                    clickable: true,
+                    dynamicBullets: true,
+                },
             });
         });
     </script>

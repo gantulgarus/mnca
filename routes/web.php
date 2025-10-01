@@ -9,6 +9,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MembershipController;
+use App\Http\Controllers\CollaborationController;
 use App\Http\Controllers\HumanResourceController;
 use App\Http\Controllers\BuildingMaterialPriceController;
 
@@ -58,6 +59,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('building_material_prices', BuildingMaterialPriceController::class);
     Route::resource('books', BookController::class);
     Route::resource('users', UserController::class);
+    Route::resource('collaborations', CollaborationController::class);
 });
 
 require __DIR__ . '/auth.php';

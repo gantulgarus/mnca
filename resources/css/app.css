@@ -840,3 +840,15 @@ footer {
     margin-right: auto;
     line-height: 1.6;
 }
+
+.collaboration-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px; /* Slide-ийн ижил өндөр */
+}
+
+.collaboration-img {
+    max-height: 80px;
+    object-fit: contain;
+}

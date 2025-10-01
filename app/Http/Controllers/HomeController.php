@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Post;
 use App\Models\Membership;
 use Illuminate\Http\Request;
+use App\Models\Collaboration;
 use App\Models\BuildingMaterialPrice;
 
 class HomeController extends Controller
@@ -13,7 +14,8 @@ class HomeController extends Controller
     {
 
         $memberships = Membership::all();
+        $collaborations = Collaboration::all();
 
-        return view('home', compact('memberships'));
+        return view('home', compact('memberships', 'collaborations'));
     }
 }
