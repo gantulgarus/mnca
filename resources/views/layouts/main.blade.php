@@ -44,11 +44,37 @@
         </a>
     </div>
 
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="btn btn-primary position-fixed"
+        style="bottom: 30px; right: 30px; display: none; border-radius: 50%; width: 50px; height: 50px; z-index: 9999;">
+        ↑
+    </button>
+
 
     <!-- Footer хэсэг -->
     @include('layouts.footer')
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Scroll хийх үед товч харуулах
+        window.onscroll = function() {
+            let btn = document.getElementById("backToTop");
+            if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+                btn.style.display = "block";
+            } else {
+                btn.style.display = "none";
+            }
+        };
+
+        // Click хийхэд дээр очих
+        document.getElementById("backToTop").addEventListener("click", function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+
     @livewireScripts
     @yield('scripts')
 

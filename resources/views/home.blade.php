@@ -79,7 +79,7 @@
         <h2 class="section-title">{{ __('benefit.title') }}</h2>
         <p class="section-subtitle">Манай гишүүдийн олж авдаг онцгой давуу талууд</p>
 
-        <div class="swiper benefit-swiper mb-4" style="height: 280px;">
+        <div class="swiper benefit-swiper mb-4" style="height: 400px;">
             <div class="swiper-wrapper">
                 @foreach (__('benefit.items') as $item)
                     <div class="swiper-slide px-2">
@@ -116,21 +116,24 @@
             <div class="swiper-wrapper">
                 @foreach ($collaborations as $item)
                     <div class="swiper-slide px-2 d-flex justify-content-center align-items-center">
-                        <div class="card collaboration-card h-100 text-center p-2 d-flex justify-content-center align-items-center"
-                            style="height: 100px;" data-bs-toggle="tooltip" data-bs-placement="top"
-                            title="{{ $item->name }}">
-                            @if ($item->image)
-                                <img src="{{ asset($item->image) }}" alt="{{ $item->name }}"
-                                    class="collaboration-img img-fluid" style="max-height: 80px; object-fit: contain;">
-                            @else
-                                <div class="d-flex align-items-center justify-content-center border rounded p-2 bg-light"
-                                    style="width: 150px; height: 80px;">
-                                    <span class="text-muted text-center small">{{ $item->name }}</span>
-                                </div>
-                            @endif
-                        </div>
+                        <a href="{{ $item->link ?? '#' }}" target="_blank" class="text-decoration-none">
+                            <div class="card collaboration-card h-100 text-center p-2 d-flex justify-content-center align-items-center"
+                                style="height: 100px;" data-bs-toggle="tooltip" data-bs-placement="top"
+                                title="{{ $item->name }}">
+                                @if ($item->image)
+                                    <img src="{{ asset($item->image) }}" alt="{{ $item->name }}"
+                                        class="collaboration-img img-fluid" style="max-height: 80px; object-fit: contain;">
+                                @else
+                                    <div class="d-flex align-items-center justify-content-center border rounded p-2 bg-light"
+                                        style="width: 150px; height: 80px;">
+                                        <span class="text-muted text-center small">{{ $item->name }}</span>
+                                    </div>
+                                @endif
+                            </div>
+                        </a>
                     </div>
                 @endforeach
+
             </div>
 
             <!-- Pagination -->

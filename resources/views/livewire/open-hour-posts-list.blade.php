@@ -32,6 +32,6 @@
     </div>
 
     <div id="open-hour-pagination" class="d-flex justify-content-center mt-3">
-        {{ $open_hour_posts->links() }}
+        {{ $open_hour_posts->links('vendor.pagination.bootstrap-4') }}
     </div>
 </div>
