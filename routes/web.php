@@ -11,7 +11,9 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\CollaborationController;
 use App\Http\Controllers\HumanResourceController;
+use App\Http\Controllers\MemberRequestController;
 use App\Http\Controllers\BuildingMaterialPriceController;
+use App\Http\Controllers\Admin\MemberManagementController;
 
 
 Route::get('lang/{locale}', function ($locale) {
@@ -60,6 +62,12 @@ Route::middleware('auth')->group(function () {
     Route::resource('books', BookController::class);
     Route::resource('users', UserController::class);
     Route::resource('collaborations', CollaborationController::class);
+    Route::resource('member-requests', MemberManagementController::class);
 });
+
+// Public form submission
+Route::get('/membership-request', [MemberRequestController::class, 'create'])->name('membership.request.create');
+Route::post('/membership-request', [MemberRequestController::class, 'store'])->name('membership.request.store');
+
 
 require __DIR__ . '/auth.php';

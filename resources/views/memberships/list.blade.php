@@ -296,6 +296,15 @@
             </div>
         </div>
 
+
+        <section class="mt-5 py-5 bg-primary text-white text-center">
+            <div class="container">
+                <h4 class="mb-3">Гишүүнчлэлээр элсэх цахим хүсэлт илгээх үү?</h4>
+                <a href="{{ route('membership.request.create') }}" class="btn btn-light px-4 py-2 fw-bold">Хүсэлт
+                    илгээх</a>
+            </div>
+        </section>
+
     </div>
 @endsection
 

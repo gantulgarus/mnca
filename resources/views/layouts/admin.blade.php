@@ -53,6 +53,7 @@
                 <a href="{{ route('posts.index') }}">Мэдээ</a>
                 <a href="{{ route('human-resources.index') }}">Хүний нөөц</a>
                 <a href="{{ route('memberships.index') }}">Гишүүнчлэл</a>
+                <a href="{{ route('member-requests.index') }}">Хүсэлт</a>
                 <a href="{{ route('building_material_prices.index') }}">Ханш</a>
                 <a href="{{ route('books.index') }}">Ном, сэтгүүл</a>
                 <a href="{{ route('collaborations.index') }}">Хамтын ажиллагаа</a>

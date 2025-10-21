@@ -1,6 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
+    {{-- Мэндчилгээ --}}
     <section class="container my-5">
         <div class="row">
             <!-- Leader's Image -->
@@ -132,6 +133,154 @@
         </div>
     </section>
 
+    {{-- NEW: Эрхэм зорилго / Алсын хараа / Үнэт зүйл (Full-width Banner with Background Image) --}}
+    <section class="py-0">
+        <div id="missionCarousel" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-indicators">
+                <button type="button" data-bs-target="#missionCarousel" data-bs-slide-to="0" class="active"
+                    aria-current="true" aria-label="Эрхэм зорилго"></button>
+                <button type="button" data-bs-target="#missionCarousel" data-bs-slide-to="1"
+                    aria-label="Алсын хараа"></button>
+                <button type="button" data-bs-target="#missionCarousel" data-bs-slide-to="2"
+                    aria-label="Үнэт зүйл"></button>
+            </div>
+
+            <div class="carousel-inner">
+                {{-- Slide 1: Эрхэм зорилго --}}
+                <div class="carousel-item active">
+                    <div class="d-flex align-items-center justify-content-center text-center text-white p-5"
+                        style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                            url('{{ asset('images/banner.png') }}') center/cover no-repeat;
+                           min-height: 350px;">
+                        <div class="container">
+                            <h3 class="fw-bold mb-3">Эрхэм зорилго</h3>
+                            <p class="mb-0 fs-5" style="max-width: 900px; margin: 0 auto; line-height: 1.6;">
+                                Барилгын салбарт сайн засаглалыг хөгжүүлэхэд төр ба хувийн хэвшлийн хамтын ажиллагаа,
+                                уялдааг сайжруулж, хууль эрх зүйн орчинд шинэчлэл хийхэд нөлөөлж, гишүүдийн чадавхийг
+                                сайжруулж, барилгын зах зээлийн тогтвортой өсөлтийн төлөө чармайн ажиллана.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                {{-- Slide 2: Алсын хараа --}}
+                <div class="carousel-item">
+                    <div class="d-flex align-items-center justify-content-center text-center text-white p-5"
+                        style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)),
+                            url('{{ asset('images/banner.png') }}') center/cover no-repeat;
+                           min-height: 350px;">
+                        <div class="container">
+                            <h3 class="fw-bold mb-3">Алсын хараа</h3>
+                            <p class="mb-0 fs-5" style="max-width: 900px; margin: 0 auto; line-height: 1.6;">
+                                Гишүүн байгууллагуудынхаа ашиг сонирхлыг хуулийн хүрээнд хамгаалж төлөөлсөн,
+                                үндэсний болон олон улсын хэмжээнд хүлээн зөвшөөрөгдсөн, барилгын салбарт
+                                үйл ажиллагаагаа явуулж буй ТББ-уудын манлайлагч байгууллага байна.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                {{-- Slide 3: Үнэт зүйл --}}
+                <div class="carousel-item">
+                    <div class="d-flex align-items-center justify-content-center text-center text-white p-5"
+                        style="background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+                            url('{{ asset('images/banner.png') }}') center/cover no-repeat;
+                           min-height: 350px;">
+                        <div class="container">
+                            <h3 class="fw-bold mb-3">Үнэт зүйл</h3>
+                            <p class="mb-0 fs-5" style="max-width: 900px; margin: 0 auto; line-height: 1.6;">
+                                Ёс зүйтэй байдал, хамтын ажиллагаа, хариуцлага, ил тод байдал,
+                                шинэ санаачилга, мэргэжлийн ёс зүй бол бидний үнэт зүйл юм.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{-- Carousel Controls --}}
+            <button class="carousel-control-prev" type="button" data-bs-target="#missionCarousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Өмнөх</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#missionCarousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Дараах</span>
+            </button>
+        </div>
+    </section>
+
+    {{-- Зорилго --}}
+    <section class="py-5">
+        <div class="container">
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-body text-center d-flex flex-column justify-content-between">
+                            <div>
+                                <div class="mb-3" style="color: #203074;">
+                                    <i class="fas fa-gavel fa-2x"></i>
+                                </div>
+                                <p class="text-muted small mb-0">
+                                    Салбарын хууль эрх зүйн орчинд шинэчлэл хийх, олон улсын барилгын гэрээний зарчимд
+                                    нийцүүлэн нэвтрүүлэх, барилгын салбарт сайн засаглалыг бий болгох.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-body text-center d-flex flex-column justify-content-between">
+                            <div>
+                                <div class="mb-3" style="color: #203074;">
+                                    <i class="fas fa-handshake fa-2x"></i>
+                                </div>
+                                <p class="text-muted small mb-0">
+                                    Төр-хувийн хэвшлийн хамтын ажиллагаа, уялдааг сайжруулах үйл ажиллагааг зохион
+                                    байгуулах, оролцогч талууд хамтран ажиллах нөхцөлийг бүрдүүлэх.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-body text-center d-flex flex-column justify-content-between">
+                            <div>
+                                <div class="mb-3" style="color: #203074;">
+                                    <i class="fas fa-industry fa-2x"></i>
+                                </div>
+                                <p class="text-muted small mb-0">
+                                    Барилгын компаниудын засаглал, өрсөлдөх чадварыг сайжруулах, мэргэжилтний ур чадварыг
+                                    дээшлүүлэх, дэвшилтэт технологи, ноу-хауг нэвтрүүлэх.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6 col-lg-3">
+                    <div class="card h-100 shadow-sm border-0">
+                        <div class="card-body text-center d-flex flex-column justify-content-between">
+                            <div>
+                                <div class="mb-3" style="color: #203074;">
+                                    <i class="fas fa-building fa-2x"></i>
+                                </div>
+                                <p class="text-muted small mb-0">
+                                    Үл хөдлөх хөрөнгийн зах зээлийг хөгжүүлж, хөрөнгө оруулалтыг нэмэгдүүлэх, барилгын
+                                    эрэлтийг өсгөх, зах зээлийг идэвхжүүлэх ажлыг зохион байгуулах.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{-- Бүтэц, бүрэлдэхүүн --}}
     <section id="structure" class="py-5 bg-light">
         <div class="container">
             <h2 class="mb-4 text-center fw-bold">Бүтэц, бүрэлдэхүүн</h2>
@@ -189,6 +338,72 @@
         </div>
     </section>
 
+    {{-- Түүхэн замнал --}}
+
+    <section class="timeline-section py-5" style="background-color: #fff;">
+        <div class="container">
+            <h2 class="text-center fw-bold mb-5" style="color:#203074;">
+                Түүхэн замнал
+            </h2>
+
+            <div class="timeline">
+
+                <!-- 2009 -->
+                <div class="timeline-item left">
+                    <div class="timeline-content shadow-sm">
+                        <div class="year">2009</div>
+                        <p>
+                            Монгол Улсын Ерөнхийлөгч болон Засгийн газартай хамтран ажиллав.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 2010 -->
+                <div class="timeline-item right">
+                    <div class="timeline-content shadow-sm">
+                        <div class="year">2010</div>
+                        <p>
+                            Гадаад харилцаагаа тэлж, олон улсын байгууллагуудтай хамтран ажиллав.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 2011 -->
+                <div class="timeline-item left">
+                    <div class="timeline-content shadow-sm">
+                        <div class="year">2011</div>
+                        <p>
+                            Салбарын хууль, эрх зүйн шинэчлэлийн хүрээнд томоохон ажлуудыг хийж гүйцэтгэв.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 2012 -->
+                <div class="timeline-item right">
+                    <div class="timeline-content shadow-sm">
+                        <div class="year">2012</div>
+                        <p>
+                            Японы Хоккайдогийн барилгын холбоо, технологийн төвтэй “Хамтран ажиллах санамж бичиг”-т гарын
+                            үсэг зурж,
+                            хамтын ажиллагааны эхлэлийг тавив.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 2013 -->
+                <div class="timeline-item left">
+                    <div class="timeline-content shadow-sm">
+                        <div class="year">2013</div>
+                        <p>
+                            Гишүүдийгээ дэмжиж ажиллав.
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
     <style>
         /* Tab styling */
         .nav-pills .nav-link {
@@ -236,6 +451,106 @@
             .rounded-circle {
                 width: 100px !important;
                 height: 100px !important;
+            }
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+        }
+
+        .timeline {
+            position: relative;
+            margin: 0 auto;
+            padding: 2rem 0;
+            width: 90%;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 3px;
+            background: #203074;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            width: 50%;
+            padding: 20px 40px;
+        }
+
+        .timeline-item.left {
+            left: 0;
+        }
+
+        .timeline-item.right {
+            left: 50%;
+        }
+
+        .timeline-content {
+            background: #f8f9fa;
+            /* light gray background */
+            padding: 1.5rem 2rem;
+            border-radius: 12px;
+            border-left: 4px solid #203074;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-content:hover {
+            background: #e9ecf5;
+            transform: translateY(-5px);
+        }
+
+        .year {
+            font-weight: 700;
+            font-size: 1.3rem;
+            color: #203074;
+            margin-bottom: 10px;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            top: 24px;
+            width: 16px;
+            height: 16px;
+            border: 3px solid #203074;
+            background: #fff;
+            border-radius: 50%;
+            z-index: 1;
+        }
+
+        .timeline-item.left::before {
+            right: -8px;
+        }
+
+        .timeline-item.right::before {
+            left: -8px;
+        }
+
+        @media (max-width: 768px) {
+            .timeline::after {
+                left: 10px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 40px;
+                margin-bottom: 2rem;
+            }
+
+            .timeline-item.right {
+                left: 0;
+            }
+
+            .timeline-item::before {
+                left: 0;
             }
         }
     </style>
