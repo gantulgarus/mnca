@@ -44,6 +44,7 @@ Route::get('/posts/list', [PostController::class, 'list'])->name('posts.list');
 Route::get('/posts/detail/{post}', [PostController::class, 'detail'])->name('posts.detail');
 Route::get('/memberships/list', [MembershipController::class, 'list'])->name('memberships.list');
 Route::get('/books/list', [BookController::class, 'list'])->name('books.list');
+Route::get('/posts/license_posts', [PostController::class, 'license_posts'])->name('posts.license_posts');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

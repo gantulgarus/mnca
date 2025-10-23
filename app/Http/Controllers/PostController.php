@@ -131,7 +131,12 @@ class PostController extends Controller
 
     public function list()
     {
-        $posts = Post::orderBy('published_at', 'desc')->paginate(6);
+        $posts = Post::whereHas('category', function ($query) {
+            $query->whereIn('name', ['Мэдээ', 'Фото мэдээ', 'Видео мэдээ', 'Нээлттэй цаг']);
+        })
+            ->orderBy('published_at', 'desc')
+            ->paginate(6);
+
         return view('posts.list', compact('posts'));
     }
     public function detail(Post $post)
@@ -158,5 +163,11 @@ class PostController extends Controller
         return response()->json([
             'url' => asset("images/summernote/$filename")
         ]);
+    }
+
+    public function license_posts()
+    {
+        $posts = Post::orderBy('published_at', 'desc')->where('category_id', 7)->paginate(6);
+        return view('posts.license_posts', compact('posts'));
     }
 }

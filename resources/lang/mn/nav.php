@@ -4,7 +4,7 @@ return [
     'membership' => 'Гишүүнчлэл',
     'news' => 'Мэдээ',
     'publications' => 'Ном, сэтгүүл',
-    'license' => 'Лиценз',
+    'license' => 'Тусгай зөвшөөрөл',
     'warm_solution' => 'Дулаан шийдэл',
     'jobs' => 'Ажлын байр',
     'login' => 'Нэвтрэх',

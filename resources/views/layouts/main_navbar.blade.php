@@ -31,8 +31,8 @@
                         href="{{ route('books.list') }}">{{ __('nav.publications') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->is('grants') ? 'active' : '' }}"
-                        href="https://mcis.gov.mn/mn/grants">{{ __('nav.license') }}</a>
+                    <a class="nav-link {{ request()->routeIs('posts.license_posts') ? 'active' : '' }}"
+                        href="{{ route('posts.license_posts') }}">{{ __('nav.license') }}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('warm-solution') ? 'active' : '' }}"
