@@ -140,6 +140,26 @@
             <div class="swiper-pagination"></div>
         </div>
     </div>
+
+    <!-- Toast мэдэгдэл -->
+    @if ($notification)
+        <!-- Toast мэдэгдэл дэлгэцийн голд -->
+        <div class="toast-container position-fixed top-50 start-50 translate-middle p-3" style="z-index: 1055;">
+            <div id="homeToast" class="toast align-items-center bg-white text-dark border shadow-lg text-start"
+                role="alert" aria-live="assertive" aria-atomic="true"
+                style="min-width: 600px; max-width: 700px; font-size: 0.95rem; line-height: 1.5;">
+
+                <div class="toast-header bg-white text-dark border-bottom">
+                    <strong class="me-auto fs-6">{{ $notification->title ?? 'Мэдэгдэл' }}</strong>
+                    <button type="button" class="btn-close ms-2 mb-1" data-bs-dismiss="toast" aria-label="Close"></button>
+                </div>
+
+                <div class="toast-body">
+                    {!! nl2br(e($notification->message)) !!}
+                </div>
+            </div>
+        </div>
+    @endif
 @endsection
 
 @section('scripts')
@@ -294,6 +314,18 @@
                     dynamicBullets: true,
                 },
             });
+        });
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toastEl = document.getElementById('homeToast');
+            if (toastEl) {
+                const toast = new bootstrap.Toast(toastEl, {
+                    delay: 6000 // 6 секунд
+                });
+                toast.show();
+            }
         });
     </script>
 @endsection

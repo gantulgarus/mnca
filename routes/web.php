@@ -12,6 +12,7 @@ use App\Http\Controllers\MembershipController;
 use App\Http\Controllers\CollaborationController;
 use App\Http\Controllers\HumanResourceController;
 use App\Http\Controllers\MemberRequestController;
+use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\BuildingMaterialPriceController;
 use App\Http\Controllers\Admin\MemberManagementController;
 
@@ -64,6 +65,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('users', UserController::class);
     Route::resource('collaborations', CollaborationController::class);
     Route::resource('member-requests', MemberManagementController::class);
+    Route::resource('notifications', NotificationController::class);
 });
 
 // Public form submission

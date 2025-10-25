@@ -51,6 +51,7 @@
                 </a>
                 <a href="{{ route('dashboard') }}">Хянах самбар</a>
                 <a href="{{ route('posts.index') }}">Мэдээ</a>
+                <a href="{{ route('notifications.index') }}">Мэдэгдэл</a>
                 <a href="{{ route('human-resources.index') }}">Хүний нөөц</a>
                 <a href="{{ route('memberships.index') }}">Гишүүнчлэл</a>
                 <a href="{{ route('member-requests.index') }}">Хүсэлт</a>
