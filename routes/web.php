@@ -72,5 +72,11 @@ Route::middleware('auth')->group(function () {
 Route::get('/membership-request', [MemberRequestController::class, 'create'])->name('membership.request.create');
 Route::post('/membership-request', [MemberRequestController::class, 'store'])->name('membership.request.store');
 
+Route::get('/clear-cache', function () {
+    \Artisan::call('optimize:clear');
+    return nl2br(\Artisan::output());
+});
+
+
 
 require __DIR__ . '/auth.php';

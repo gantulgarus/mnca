@@ -143,23 +143,54 @@
 
     <!-- Toast мэдэгдэл -->
     @if ($notification)
-        <!-- Toast мэдэгдэл дэлгэцийн голд -->
         <div class="toast-container position-fixed top-50 start-50 translate-middle p-3" style="z-index: 1055;">
             <div id="homeToast" class="toast align-items-center bg-white text-dark border shadow-lg text-start"
-                role="alert" aria-live="assertive" aria-atomic="true"
-                style="min-width: 600px; max-width: 700px; font-size: 0.95rem; line-height: 1.5;">
-
+                role="alert" aria-live="assertive" aria-atomic="true">
                 <div class="toast-header bg-white text-dark border-bottom">
                     <strong class="me-auto fs-6">{{ $notification->title ?? 'Мэдэгдэл' }}</strong>
                     <button type="button" class="btn-close ms-2 mb-1" data-bs-dismiss="toast" aria-label="Close"></button>
                 </div>
-
                 <div class="toast-body">
                     {!! nl2br(e($notification->message)) !!}
                 </div>
             </div>
         </div>
     @endif
+
+    <style>
+        /* Default: том дэлгэц (desktop) */
+        #homeToast {
+            min-width: 600px;
+            max-width: 700px;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        /* Дунд дэлгэц (tablet, <992px) */
+        @media (max-width: 992px) {
+            #homeToast {
+                min-width: 500px;
+                max-width: 600px;
+            }
+        }
+
+        /* Жижиг дэлгэц (mobile, <768px) */
+        @media (max-width: 768px) {
+            #homeToast {
+                min-width: auto;
+                max-width: 90%;
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Маш жижиг дэлгэц (жижиг гар, <480px) */
+        @media (max-width: 480px) {
+            #homeToast {
+                max-width: 95%;
+                font-size: 0.85rem;
+            }
+        }
+    </style>
 @endsection
 
 @section('scripts')
