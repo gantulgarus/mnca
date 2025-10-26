@@ -58,6 +58,7 @@
                 <a href="{{ route('building_material_prices.index') }}">Ханш</a>
                 <a href="{{ route('books.index') }}">Ном, сэтгүүл</a>
                 <a href="{{ route('collaborations.index') }}">Хамтын ажиллагаа</a>
+                <a href="{{ route('legal_contents.index') }}">Хууль эрх зүй</a>
                 <a href="{{ route('users.index') }}">Хэрэглэгч</a>
             </div>
 

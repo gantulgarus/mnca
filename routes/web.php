@@ -9,6 +9,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\MembershipController;
+use App\Http\Controllers\LegalContentController;
 use App\Http\Controllers\CollaborationController;
 use App\Http\Controllers\HumanResourceController;
 use App\Http\Controllers\MemberRequestController;
@@ -66,11 +67,15 @@ Route::middleware('auth')->group(function () {
     Route::resource('collaborations', CollaborationController::class);
     Route::resource('member-requests', MemberManagementController::class);
     Route::resource('notifications', NotificationController::class);
+    Route::resource('legal_contents', LegalContentController::class);
 });
 
 // Public form submission
 Route::get('/membership-request', [MemberRequestController::class, 'create'])->name('membership.request.create');
 Route::post('/membership-request', [MemberRequestController::class, 'store'])->name('membership.request.store');
+
+Route::get('/legal/{category}', [LegalContentController::class, 'showCategory'])
+    ->name('legal.category');
 
 Route::get('/clear-cache', function () {
     \Artisan::call('optimize:clear');

@@ -78,6 +78,32 @@
     @livewireScripts
     @yield('scripts')
 
+    <!-- Facebook Messenger Plugin -->
+    <div id="fb-root"></div>
+    <script>
+        window.fbAsyncInit = function() {
+            FB.init({
+                xfbml: true,
+                version: 'v18.0'
+            });
+        };
+
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+
+    <!-- Messenger Chat Plugin -->
+    <div class="fb-customerchat" attribution="biz_inbox" page_id="107202105741973" theme_color="#0084ff"
+        logged_in_greeting="Hello! This is a demo messenger for testing."
+        logged_out_greeting="Hi! This is a test messenger plugin.">
+    </div>
+
 </body>
 
 </html>

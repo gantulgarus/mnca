@@ -18,30 +18,44 @@
                     <a class="nav-link {{ request()->routeIs('about') ? 'active' : '' }}"
                         href="{{ route('about') }}">{{ __('nav.about') }}</a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('memberships.list') ? 'active' : '' }}"
                         href="{{ route('memberships.list') }}">{{ __('nav.membership') }}</a>
-                </li>
+                </li> --}}
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('posts.list') ? 'active' : '' }}"
                         href="{{ route('posts.list') }}">{{ __('nav.news') }}</a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('books.list') ? 'active' : '' }}"
                         href="{{ route('books.list') }}">{{ __('nav.publications') }}</a>
-                </li>
+                </li> --}}
                 <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('posts.license_posts') ? 'active' : '' }}"
                         href="{{ route('posts.license_posts') }}">{{ __('nav.license') }}</a>
                 </li>
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('warm-solution') ? 'active' : '' }}"
                         href="{{ route('warm-solution') }}">{{ __('nav.warm_solution') }}</a>
-                </li>
-                <li class="nav-item">
+                </li> --}}
+                {{-- <li class="nav-item">
                     <a class="nav-link {{ request()->is('jobs') ? 'active' : '' }}"
                         href="https://job-mnca.mn/">{{ __('nav.jobs') }}</a>
+                </li> --}}
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->is('legal/framework') ? 'active' : '' }}"
+                        href="{{ route('legal.category', 'framework') }}">{{ __('nav.legal_framework') }}</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->is('legal/guidelines') ? 'active' : '' }}"
+                        href="{{ route('legal.category', 'guidelines') }}">{{ __('nav.guidelines_manuals') }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->is('legal/contact-staff') ? 'active' : '' }}"
+                        href="{{ route('legal.category', 'contact-staff') }}">{{ __('nav.contact_staff') }}</a>
+                </li>
+
+
             </ul>
             <a class="btn btn-primary px-3 py-2 rounded-pill" href="{{ route('login') }}">{{ __('nav.login') }}</a>
         </div>
