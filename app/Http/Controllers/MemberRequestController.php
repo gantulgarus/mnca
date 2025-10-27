@@ -15,8 +15,7 @@ class MemberRequestController extends Controller
     public function store(Request $request)
     {
         $validated = $request->validate([
-            'organization' => 'required|string|max:255',
-            'membership_info' => 'required|string|max:1000',
+            'suggestion' => 'required|string|max:1000',
             'lastname' => 'required|string|max:100',
             'firstname' => 'required|string|max:100',
             'email' => 'required|email',
@@ -25,6 +24,6 @@ class MemberRequestController extends Controller
 
         MemberRequest::create($validated);
 
-        return redirect()->back()->with('success', 'Таны гишүүнчлэлийн хүсэлт амжилттай илгээгдлээ!');
+        return redirect()->back()->with('success', 'Таны санал хүсэлт амжилттай илгээгдлээ!');
     }
 }

@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="container mt-4">
-        <h2 class="mb-4 fw-bold">Гишүүнчлэлийн хүсэлтүүд</h2>
+        <h2 class="mb-4 fw-bold">Санал хүсэлтүүд</h2>
 
         @if (session('success'))
             <div class="alert alert-success">{{ session('success') }}</div>
@@ -15,13 +15,12 @@
                         <thead class="table-light text-center">
                             <tr>
                                 <th>#</th>
-                                <th>Байгууллага</th>
-                                <th>Гишүүнчлэлийн мэдээлэл</th>
                                 <th>Овог</th>
                                 <th>Нэр</th>
                                 <th>Имэйл</th>
                                 <th>Утас</th>
-                                <th>Төлөв</th>
+                                <th>Санал хүсэлт</th>
+                                {{-- <th>Төлөв</th> --}}
                                 <th>Үйлдэл</th>
                             </tr>
                         </thead>
@@ -29,15 +28,12 @@
                             @forelse ($requests as $req)
                                 <tr>
                                     <td class="text-center">{{ $loop->iteration }}</td>
-                                    <td>{{ $req->organization ?? '-' }}</td>
-                                    <td title="{{ $req->membership_info }}">
-                                        {{ Str::limit($req->membership_info, 50) }}
-                                    </td>
                                     <td>{{ $req->lastname }}</td>
                                     <td>{{ $req->firstname }}</td>
                                     <td>{{ $req->email }}</td>
                                     <td>{{ $req->phone }}</td>
-                                    <td class="text-center">
+                                    <td>{{ $req->suggestion }}</td>
+                                    {{-- <td class="text-center">
                                         <form action="{{ route('member-requests.update', $req->id) }}" method="POST">
                                             @csrf
                                             @method('PUT')
@@ -45,13 +41,13 @@
                                                 onchange="this.form.submit()">
                                                 <option value="pending" {{ $req->status == 'pending' ? 'selected' : '' }}>
                                                     Хүлээгдэж буй</option>
-                                                <option value="approved"
-                                                    {{ $req->status == 'approved' ? 'selected' : '' }}>Батлагдсан</option>
+                                                <option value="approved" {{ $req->status == 'approved' ? 'selected' : '' }}>
+                                                    Батлагдсан</option>
                                                 <option value="rejected"
                                                     {{ $req->status == 'rejected' ? 'selected' : '' }}>Татгалзсан</option>
                                             </select>
                                         </form>
-                                    </td>
+                                    </td> --}}
                                     <td class="text-center">
                                         <form action="{{ route('member-requests.destroy', $req->id) }}" method="POST"
                                             onsubmit="return confirm('Устгах уу?')">

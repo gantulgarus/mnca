@@ -51,8 +51,8 @@
                         href="{{ route('legal.category', 'guidelines') }}">{{ __('nav.guidelines_manuals') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->is('legal/contact-staff') ? 'active' : '' }}"
-                        href="{{ route('legal.category', 'contact-staff') }}">{{ __('nav.contact_staff') }}</a>
+                    <a class="nav-link {{ request()->is('membership/request/create') ? 'active' : '' }}"
+                        href="{{ route('membership.request.create') }}">{{ __('nav.contact_staff') }}</a>
                 </li>
 
 

@@ -14,5 +14,6 @@ class MemberRequest extends Model
         'email',
         'phone',
         'status',
+        'suggestion',
     ];
 }
