@@ -83,5 +83,9 @@ Route::get('/clear-cache', function () {
 });
 
 
+Route::get('/test-locale', function () {
+    return 'Current locale: ' . app()->getLocale();
+});
+
 
 require __DIR__ . '/auth.php';
