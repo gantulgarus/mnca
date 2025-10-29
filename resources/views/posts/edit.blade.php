@@ -88,6 +88,8 @@
                 placeholder: 'Агуулгаа энд бичнэ үү...',
                 tabsize: 2,
                 height: 300,
+                codeviewFilter: false, // HTML шүүлтүүрийг идэвхгүй болгоно
+                codeviewIframeFilter: false, // Iframe шүүлтүүрийг идэвхгүй болгоно
                 callbacks: {
                     onImageUpload: function(files) {
                         uploadImage(files[0], $(this));
