@@ -14,10 +14,10 @@
         <!-- Menu & Login -->
         <div class="collapse navbar-collapse" id="mainNav">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('about') ? 'active' : '' }}"
                         href="{{ route('about') }}">{{ __('nav.about') }}</a>
-                </li>
+                </li> --}}
                 {{-- <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('memberships.list') ? 'active' : '' }}"
                         href="{{ route('memberships.list') }}">{{ __('nav.membership') }}</a>

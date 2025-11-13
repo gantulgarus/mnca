@@ -8,6 +8,7 @@ use App\Models\Notification;
 use Illuminate\Http\Request;
 use App\Models\Collaboration;
 use App\Models\BuildingMaterialPrice;
+use App\Models\LegalContent;
 
 class HomeController extends Controller
 {
@@ -18,6 +19,10 @@ class HomeController extends Controller
         $memberships = Membership::all();
         $collaborations = Collaboration::all();
 
-        return view('home', compact('memberships', 'collaborations', 'notification'));
+        $laws = LegalContent::where('category', 'legal_framework')->limit(6)->orderBy('created_at', 'desc')->get();
+        $guidelines = LegalContent::where('category', 'guidelines_manuals')->limit(6)->orderBy('created_at', 'desc')->get();
+        // dd($laws);
+
+        return view('home', compact('memberships', 'collaborations', 'notification', 'laws', 'guidelines'));
     }
 }

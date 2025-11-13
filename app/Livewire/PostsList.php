@@ -10,7 +10,7 @@ class PostsList extends Component
 {
     use WithPagination;
 
-    protected $paginationTheme = 'bootstrap'; // Tailwind биш бол
+    protected $paginationTheme = 'bootstrap';
 
     public $postsPage = 1;
     protected $queryString = ['postsPage'];
@@ -19,7 +19,7 @@ class PostsList extends Component
     {
         $posts = Post::where('category_id', 1)
             ->orderBy('published_at', 'desc')
-            ->paginate(4, ['*'], 'postsPage');
+            ->paginate(3, ['*'], 'postsPage');
 
         return view('livewire.posts-list', compact('posts'));
     }

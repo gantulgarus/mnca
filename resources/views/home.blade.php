@@ -2,14 +2,59 @@
 
 @section('content')
     <div class="container my-4">
-        <div class="row">
-            <!-- Зүүн тал: Мэдээнүүд -->
-            <div class="col-md-8">
-                @livewire('posts-list')
+        <div class="row justify-content-center text-center g-3">
+            <div class="col-md-4 col-12 col-sm-6">
+                <a href="https://license.mn/#iss=https%3A%2F%2Fauth.itc.gov.mn%2Fauth%2Frealms%2FLicense"
+                    class="link-card btn btn-primary d-flex align-items-center justify-content-between gap-2 w-100 rounded-3 py-3">
+                    <img src="{{ asset('images/white-logo.png') }}" alt="Logo 1" class="logo-img">
+                    <span class="fw-semibold text-white fs-6">WWW.LICENSE.MN</span>
+                </a>
             </div>
 
-            <!-- Баруун талын зураг ба статистик -->
-            <div class="col-md-4">
+            <div class="col-md-4 col-12 col-sm-6">
+                <a href="https://www.mcis.gov.mn"
+                    class="link-card btn btn-primary d-flex align-items-center justify-content-between gap-2 w-100 rounded-3 py-3">
+                    <img src="{{ asset('images/mcisgovmn.png') }}" alt="Logo 2" class="logo-img">
+                    <span class="fw-semibold text-white fs-6">WWW.MCIS.GOV.MN</span>
+                </a>
+            </div>
+
+            <div class="col-md-4 col-12 col-sm-6">
+                <a href="https://www.mnca.mn"
+                    class="link-card btn btn-primary d-flex align-items-center justify-content-between gap-2 w-100 rounded-3 py-3 h-16">
+                    <img src="{{ asset('images/mbua.png') }}" alt="Logo 3" class="logo-img">
+                    <span class="fw-semibold text-white fs-6">WWW.MNCA.MN</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        .logo-img {
+            width: 160px;
+            height: 50px;
+            object-fit: contain;
+            color: white
+        }
+
+        .link-card {
+            transition: all 0.25s ease;
+        }
+
+        .link-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+        }
+    </style>
+
+
+
+    <div class="container my-5">
+        <!-- Зүүн тал: Мэдээнүүд -->
+        @livewire('posts-list')
+
+        <!-- Баруун талын зураг ба статистик -->
+        {{-- <div class="col-md-4">
                 <div class="d-flex flex-column align-items-center">
                     <!-- Нэг мөрөнд байрлах статистик -->
                     <div class="w-100">
@@ -21,24 +66,58 @@
                         @livewire('banner-posts', ['categoryId' => 4, 'height' => 'tall'])
                     </div>
                 </div>
+            </div> --}}
+    </div>
+
+    <!-- Horizontal Banner Section: Swiper - бага өндөр -->
+    {{-- <div class="container-fluid px-0">
+        @livewire('banner-posts', ['categoryId' => 5, 'height' => 'short'])
+    </div> --}}
+
+    <!-- Видео мэдээ -->
+    <div class="container mb-5 video-section">
+        <h2 class="section-title">{{ __('section_title.video_news') }}</h2>
+        {{-- <p class="section-subtitle">Сүүлийн үеийн видео мэдээ, тайлбарууд</p> --}}
+        @livewire('video-posts-list')
+    </div>
+
+    <div class="container py-5">
+
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <h2 class="section-title">Ил тод байдал</h2>
+
+            </div>
+            <div class="col-md-3">
+                <h2 class="section-title">Хууль эрх зүй</h2>
+                <div class="list-group list-group-flush">
+                    @foreach ($laws as $law)
+                        <a href="{{ asset($law->pdf_path) }}" class="list-group-item">
+                            {{ Str::limit($law->title, 50) }}
+                        </a>
+                    @endforeach
+                </div>
+            </div>
+            <div class="col-md-3">
+                <h2 class="section-title">Зөвөлгөө</h2>
+                <div class="list-group list-group-flush">
+                    @foreach ($guidelines as $guideline)
+                        <a href="{{ asset($guideline->pdf_path) }}" class="list-group-item">
+                            {{ Str::limit($guideline->title, 50) }}
+                        </a>
+                    @endforeach
+                </div>
+
+            </div>
+            <div class="col-md-3">
+                <h4 class="section-title">ТЗЭ ААНБ</h4>
+
             </div>
         </div>
     </div>
 
-    <!-- Horizontal Banner Section: Swiper - бага өндөр -->
-    <div class="container-fluid px-0">
-        @livewire('banner-posts', ['categoryId' => 5, 'height' => 'short'])
-    </div>
-
-    <!-- Видео мэдээ -->
-    <div class="container my-5 video-section">
-        <h2 class="section-title">{{ __('section_title.video_news') }}</h2>
-        <p class="section-subtitle">Сүүлийн үеийн видео мэдээ, тайлбарууд</p>
-        @livewire('video-posts-list')
-    </div>
-
     <!-- Манай гишүүн байгууллагууд -->
-    <div class="container my-5">
+    {{-- <div class="container my-5">
         <div class="member-section">
             <h2 class="section-title">{{ __('section_title.member_orgs') }}</h2>
             <p class="section-subtitle">Манай холбоонд нэгдсэн мэргэжлийн байгууллагууд</p>
@@ -72,10 +151,10 @@
                 <div class="swiper-button-next member-swiper-next"></div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <!-- Гишүүнчлэлийн давуу тал -->
-    <div class="container py-5 benefit-section">
+    {{-- <div class="container py-5 benefit-section">
         <h2 class="section-title">{{ __('benefit.title') }}</h2>
         <p class="section-subtitle">Манай гишүүдийн олж авдаг онцгой давуу талууд</p>
 
@@ -98,17 +177,17 @@
             <!-- Add pagination -->
             <div class="swiper-pagination"></div>
         </div>
-    </div>
+    </div> --}}
 
     <!-- Нээлттэй цаг -->
-    <div class="container my-5 open-hour-section">
+    {{-- <div class="container my-5 open-hour-section">
         <h2 class="section-title">Нээлттэй цаг</h2>
         <p class="section-subtitle">Нээлттэй цагийн мэдээ, мэдээлэл</p>
         @livewire('open-hour-posts-list')
-    </div>
+    </div> --}}
 
     <!-- Хамтын ажиллагаа -->
-    <div class="container my-5 collaboration-section">
+    {{-- <div class="container my-5 collaboration-section">
         <h2 class="section-title">Хамтын ажиллагаа</h2>
         <p class="section-subtitle">Бидний хамтран ажилладаг байгууллагууд</p>
 
@@ -139,10 +218,10 @@
             <!-- Pagination -->
             <div class="swiper-pagination"></div>
         </div>
-    </div>
+    </div> --}}
 
     <!-- Toast мэдэгдэл -->
-    @if ($notification)
+    {{-- @if ($notification)
         <div class="toast-container position-fixed top-50 start-50 translate-middle p-3" style="z-index: 1055;">
             <div id="homeToast" class="toast align-items-center bg-white text-dark border shadow-lg text-start"
                 role="alert" aria-live="assertive" aria-atomic="true">
@@ -155,7 +234,7 @@
                 </div>
             </div>
         </div>
-    @endif
+    @endif --}}
 
     <style>
         /* Default: том дэлгэц (desktop) */
