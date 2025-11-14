@@ -11,4 +11,6 @@ return [
     'legal_framework' => 'Хууль эрх зүй',
     'guidelines_manuals' => 'Зөвлөмж гарын авлага',
     'contact_staff' => 'Ажилтантай холбогдох',
+    'transparency' => 'Ил тод байдал',
+    'tze_companies' => 'ТЗЭ ААНБ',
 ];

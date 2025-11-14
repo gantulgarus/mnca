@@ -47,6 +47,8 @@ Route::get('/posts/detail/{post}', [PostController::class, 'detail'])->name('pos
 Route::get('/memberships/list', [MembershipController::class, 'list'])->name('memberships.list');
 Route::get('/books/list', [BookController::class, 'list'])->name('books.list');
 Route::get('/posts/license_posts', [PostController::class, 'license_posts'])->name('posts.license_posts');
+Route::get('/posts/transparency', [PostController::class, 'transparency'])->name('posts.transparency');
+Route::get('/posts/tze', [PostController::class, 'tze'])->name('posts.tze');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

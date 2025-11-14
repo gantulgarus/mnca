@@ -22,7 +22,9 @@ class HomeController extends Controller
         $laws = LegalContent::where('category', 'legal_framework')->limit(6)->orderBy('created_at', 'desc')->get();
         $guidelines = LegalContent::where('category', 'guidelines_manuals')->limit(6)->orderBy('created_at', 'desc')->get();
         // dd($laws);
+        $transparency = Post::where('category_id', 8)->limit(6)->orderBy('created_at', 'desc')->get();
+        $tze = Post::where('category_id', 9)->limit(6)->orderBy('created_at', 'desc')->get();
 
-        return view('home', compact('memberships', 'collaborations', 'notification', 'laws', 'guidelines'));
+        return view('home', compact('memberships', 'collaborations', 'notification', 'laws', 'guidelines', 'transparency', 'tze'));
     }
 }

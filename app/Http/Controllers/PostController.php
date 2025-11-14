@@ -170,4 +170,14 @@ class PostController extends Controller
         $posts = Post::orderBy('published_at', 'desc')->where('category_id', 7)->paginate(6);
         return view('posts.license_posts', compact('posts'));
     }
+    public function transparency()
+    {
+        $posts = Post::orderBy('published_at', 'desc')->where('category_id', 8)->paginate(6);
+        return view('posts.transparency', compact('posts'));
+    }
+    public function tze()
+    {
+        $posts = Post::orderBy('published_at', 'desc')->where('category_id', 9)->paginate(6);
+        return view('posts.tze', compact('posts'));
+    }
 }

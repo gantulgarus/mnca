@@ -86,7 +86,13 @@
         <div class="row mb-4">
             <div class="col-md-3">
                 <h2 class="section-title">Ил тод байдал</h2>
-
+                <div class="list-group list-group-flush">
+                    @foreach ($transparency as $item)
+                        <a href="{{ route('posts.detail', $item->id) }}" class="list-group-item text-black">
+                            {{ Str::limit($item->translation()?->title, 40) }}
+                        </a>
+                    @endforeach
+                </div>
             </div>
             <div class="col-md-3">
                 <h2 class="section-title">Хууль эрх зүй</h2>
@@ -111,7 +117,14 @@
             </div>
             <div class="col-md-3">
                 <h4 class="section-title">ТЗЭ ААНБ</h4>
-
+                <div class="list-group
+                    list-group-flush">
+                    @foreach ($tze as $item)
+                        <a href="{{ route('posts.detail', $item->id) }}" class="list-group-item text-black">
+                            {{ Str::limit($item->translation()?->title, 40) }}
+                        </a>
+                    @endforeach
+                </div>
             </div>
         </div>
     </div>

@@ -11,4 +11,6 @@ return [
     'legal_framework' => 'Legal Framework',
     'guidelines_manuals' => 'Guidelines & Manuals',
     'contact_staff' => 'Contact Staff',
+    'transparency' => 'Transparency',
+    'tze_companies' => 'Companies',
 ];
